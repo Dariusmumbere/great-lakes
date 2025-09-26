@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Impact - Great Lakes Peace Centre</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables for consistent theming */
+        :root {
+            --primary: #1a5276;
+            --secondary: #28a745;
+            --accent: #f39c12;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --text: #333;
+            --text-light: #6c757d;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --radius: 8px;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: #144260;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: #218838;
+        }
+
+        .btn-accent {
+            background: var(--accent);
+        }
+
+        .btn-accent:hover {
+            background: #e67e22;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-menu {
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 30px;
+        }
+
+        .nav-menu a {
+            font-weight: 600;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(26, 82, 118, 0.8), rgba(26, 82, 118, 0.8)), url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 180px 0 100px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+
+        .breadcrumb a {
+            transition: var(--transition);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--accent);
+        }
+
+        .breadcrumb span {
+            margin: 0 10px;
+        }
+
+        /* Impact Overview */
+        .impact-overview {
+            background: var(--light);
+        }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .stat-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .stat-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-text {
+            font-size: 1.1rem;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        /* Impact Areas */
+        .impact-areas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .impact-area {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .impact-area.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .impact-area:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .area-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .area-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .impact-area:hover .area-image img {
+            transform: scale(1.1);
+        }
+
+        .area-content {
+            padding: 25px;
+        }
+
+        .area-content h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .area-content p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: var(--secondary);
+            border-radius: 4px;
+            width: 0;
+            transition: width 1.5s ease;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Impact Timeline */
+        .impact-timeline {
+            background: var(--light);
+            position: relative;
+        }
+
+        .timeline-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--primary);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin-bottom: 50px;
+            position: relative;
+            width: 50%;
+            padding: 20px 40px;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            transform: translateX(50px);
+        }
+
+        .timeline-item:nth-child(even).visible {
+            transform: translateX(0);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background: var(--secondary);
+            border-radius: 50%;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            background: var(--white);
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .timeline-year {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .timeline-stats {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .timeline-stat {
+            background: var(--light);
+            padding: 10px 15px;
+            border-radius: var(--radius);
+            font-size: 0.9rem;
+        }
+
+        .timeline-stat span {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Stories Section */
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .story-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .story-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .story-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .story-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .story-card:hover .story-image img {
+            transform: scale(1.1);
+        }
+
+        .story-content {
+            padding: 25px;
+        }
+
+        .story-content h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .story-meta {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .story-excerpt {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        /* Data Visualization */
+        .data-viz {
+            background: var(--light);
+        }
+
+        .viz-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .viz-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .viz-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .viz-card h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .chart-container {
+            height: 200px;
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .chart-bar {
+            position: absolute;
+            bottom: 0;
+            width: 30px;
+            background: var(--primary);
+            border-radius: 4px 4px 0 0;
+            transition: height 1.5s ease;
+        }
+
+        .chart-label {
+            position: absolute;
+            bottom: -25px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .chart-legend {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+        }
+
+        .legend-color {
+            width: 15px;
+            height: 15px;
+            border-radius: 3px;
+        }
+
+        /* Partners Section */
+        .partners {
+            text-align: center;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            align-items: center;
+        }
+
+        .partner-logo {
+            background: var(--white);
+            padding: 20px;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 120px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .partner-logo.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .partner-logo:hover {
+            transform: translateY(-5px);
+        }
+
+        .partner-logo img {
+            max-height: 60px;
+            max-width: 100%;
+            filter: grayscale(100%);
+            transition: var(--transition);
+        }
+
+        .partner-logo:hover img {
+            filter: grayscale(0%);
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(rgba(26, 82, 118, 0.9), rgba(26, 82, 118, 0.9)), url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 70px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
+        }
+
+        .footer-column p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .timeline-container::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 0;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item::after {
+                left: 20px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: var(--transition);
+                box-shadow: var(--shadow);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .impact-stats {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-header {
+                padding: 150px 0 80px;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .impact-areas, .stories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .cta h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-container">
+                <div class="logo">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTI1IDBDMTEuMTkyOSAwIDAgMTEuMTkyOSAwIDI1QzAgMzguODA3MSAxMS4xOTI5IDUwIDI1IDUwQzM4LjgwNzEgNTAgNTAgMzguODA3MSA1MCAyNUM1MCAxMS4xOTI5IDM4LjgwNzEgMCAyNSAwWk0zNi41IDE4Ljc1QzM2LjUgMTkuNzE2NSAzNS43MTY1IDIwLjUgMzQuNzUgMjAuNUgzMS4yNVYzNC43NUMzMS4yNSAzNS43MTY1IDMwLjQ2NjUgMzYuNSAyOS41IDM2LjVIMjAuNUMxOS41MzM1IDM2LjUgMTguNzUgMzUuNzE2NSAxOC43NSAzNC43NVYyMC41SDE1LjI1QzE0LjI4MzUgMjAuNSAxMy41IDE5LjcxNjUgMTMuNSAxOC43NVYxNS4yNUMxMy41IDE0LjI4MzUgMTQuMjgzNSAxMy41IDE1LjI1IDEzLjVIMzQuNzVDMzUuNzE2NSAxMy41IDM2LjUgMTQuMjgzNSAzNi41IDE1LjI1VjE4Ljc1WiIgZmlsbD0iIzFhNTI3NiIvPgo8L3N2Zz4K" alt="Great Lakes Peace Centre Logo">
+                    <div class="logo-text">Great Lakes Peace Centre</div>
+                </div>
+                <nav>
+                    <ul class="nav-menu" id="nav-menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="impact.html" class="active">Impact</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#" class="btn btn-secondary">Donate</a></li>
+                    </ul>
+                    <div class="hamburger" id="hamburger">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Impact</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span><i class="fas fa-chevron-right"></i></span>
+                <span>Our Impact</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Overview -->
+    <section class="section impact-overview">
+        <div class="container">
+            <div class="section-title">
+                <h2>Transforming Communities in Kasese</h2>
+                <p>Since 2010, we've been working tirelessly to build sustainable peace in the Kasese region. Here's what we've achieved together.</p>
+            </div>
+            <div class="impact-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <span class="stat-number" id="stat1">0</span>
+                    <span class="stat-text">People Directly Impacted</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <span class="stat-number" id="stat2">0</span>
+                    <span class="stat-text">Peace Agreements Facilitated</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <span class="stat-number" id="stat3">0</span>
+                    <span class="stat-text">People Trained</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <span class="stat-number" id="stat4">0</span>
+                    <span class="stat-text">Communities Reached</span>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <p>These numbers represent lives transformed, conflicts resolved, and communities strengthened. But behind every statistic is a story of hope and resilience.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Areas -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Key Impact Areas</h2>
+                <p>Our work focuses on several critical areas where we've made significant progress</p>
+            </div>
+            <div class="impact-areas">
+                <div class="impact-area">
+                    <div class="area-image">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Youth Empowerment">
+                    </div>
+                    <div class="area-content">
+                        <h3>Youth Empowerment</h3>
+                        <p>Engaging young people as agents of peace through skills training, leadership development, and conflict resolution education.</p>
+                        <div class="progress-bar">
+                            <div class="progress" data-target="85"></div>
+                        </div>
+                        <div class="progress-info">
+                            <span>Target: 5,000 youth</span>
+                            <span>Achieved: 4,250</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="impact-area">
+                    <div class="area-image">
+                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Women's Leadership">
+                    </div>
+                    <div class="area-content">
+                        <h3>Women's Leadership</h3>
+                        <p>Empowering women to participate in decision-making processes and lead peace initiatives in their communities.</p>
+                        <div class="progress-bar">
+                            <div class="progress" data-target="90"></div>
+                        </div>
+                        <div class="progress-info">
+                            <span>Target: 1,500 women</span>
+                            <span>Achieved: 1,350</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="impact-area">
+                    <div class="area-image">
+                        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Community Dialogue">
+                    </div>
+                    <div class="area-content">
+                        <h3>Community Dialogue</h3>
+                        <p>Facilitating inter-community dialogues to resolve conflicts and build sustainable relationships.</p>
+                        <div class="progress-bar">
+                            <div class="progress" data-target="78"></div>
+                        </div>
+                        <div class="progress-info">
+                            <span>Target: 200 dialogues</span>
+                            <span>Achieved: 156</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Timeline -->
+    <section class="section impact-timeline">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Journey of Impact</h2>
+                <p>Key milestones in our peacebuilding efforts over the years</p>
+            </div>
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2012</div>
+                        <h3>First Community Peace Agreement</h3>
+                        <p>Facilitated our first major peace agreement between two conflicting communities in the Rwenzori region, setting a precedent for future work.</p>
+                        <div class="timeline-stats">
+                            <div class="timeline-stat"><span>5,000</span> people impacted</div>
+                            <div class="timeline-stat"><span>2</span> communities reconciled</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2015</div>
+                        <h3>Youth Peace Ambassadors Program Launch</h3>
+                        <p>Launched our flagship youth program, training young people as peace ambassadors in their communities.</p>
+                        <div class="timeline-stats">
+                            <div class="timeline-stat"><span>500</span> youth trained</div>
+                            <div class="timeline-stat"><span>15</span> schools involved</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2017</div>
+                        <h3>Women's Peace Network Expansion</h3>
+                        <p>Expanded our women's leadership program to cover the entire Kasese district, significantly increasing women's participation in peace processes.</p>
+                        <div class="timeline-stats">
+                            <div class="timeline-stat"><span>800</span> women leaders</div>
+                            <div class="timeline-stat"><span>40</span> peace committees formed</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2020</div>
+                        <h3>Digital Peace Platform Launch</h3>
+                        <p>Introduced technology solutions to enhance our peacebuilding efforts, including a mobile app for conflict reporting and resolution.</p>
+                        <div class="timeline-stats">
+                            <div class="timeline-stat"><span>2,000+</span> app users</div>
+                            <div class="timeline-stat"><span>150</span> conflicts reported</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2023</div>
+                        <h3>Regional Partnership Initiative</h3>
+                        <p>Established partnerships with organizations across the Great Lakes region to expand our impact beyond Kasese district.</p>
+                        <div class="timeline-stats">
+                            <div class="timeline-stat"><span>5</span> new partner organizations</div>
+                            <div class="timeline-stat"><span>3</span> new regions reached</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Success Stories</h2>
+                <p>Real stories of transformation from communities we've worked with</p>
+            </div>
+            <div class="stories-grid">
+                <div class="story-card">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="David's Story">
+                    </div>
+                    <div class="story-content">
+                        <h3>From Conflict to Community Leader</h3>
+                        <div class="story-meta">David Masereka, Kilembe Sub-county</div>
+                        <p class="story-excerpt">David was once involved in community conflicts but transformed through our Youth Peace Ambassadors program. He now mediates disputes and leads peace initiatives.</p>
+                        <a href="#" class="btn">Read Full Story</a>
+                    </div>
+                </div>
+                <div class="story-card">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sarah's Story">
+                    </div>
+                    <div class="story-content">
+                        <h3>Women Leading Peace</h3>
+                        <div class="story-meta">Sarah Kembabazi, Rwenzori Region</div>
+                        <p class="story-excerpt">Sarah gained confidence through our Women's Leadership program and now serves on her local peace committee, ensuring women's voices are heard.</p>
+                        <a href="#" class="btn">Read Full Story</a>
+                    </div>
+                </div>
+                <div class="story-card">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="John's Story">
+                    </div>
+                    <div class="story-content">
+                        <h3>Reconciliation After Decades of Conflict</h3>
+                        <div class="story-meta">John Muhindo, Border Community</div>
+                        <p class="story-excerpt">John's community had land disputes for over 20 years. Through our mediation efforts, they reached an agreement that benefits all parties.</p>
+                        <a href="#" class="btn">Read Full Story</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Visualization -->
+    <section class="section data-viz">
+        <div class="container">
+            <div class="section-title">
+                <h2>Impact by the Numbers</h2>
+                <p>Data-driven insights into our peacebuilding effectiveness</p>
+            </div>
+            <div class="viz-container">
+                <div class="viz-card">
+                    <h3>Conflict Reduction by Region</h3>
+                    <div class="chart-container" id="conflict-chart">
+                        <!-- Chart bars will be generated by JavaScript -->
+                    </div>
+                    <div class="chart-legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #1a5276;"></div>
+                            <span>2018</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #28a745;"></div>
+                            <span>2023</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="viz-card">
+                    <h3>Program Reach Over Time</h3>
+                    <div class="chart-container" id="reach-chart">
+                        <!-- Chart bars will be generated by JavaScript -->
+                    </div>
+                    <div class="chart-legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #1a5276;"></div>
+                            <span>People Reached</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="section partners">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Partners in Impact</h2>
+                <p>We collaborate with organizations that share our vision for sustainable peace</p>
+            </div>
+            <div class="partners-grid">
+                <div class="partner-logo">
+                    <img src="https://via.placeholder.com/150x80/1a5276/ffffff?text=UN+Peace" alt="UN Peacebuilding">
+                </div>
+                <div class="partner-logo">
+                    <img src="https://via.placeholder.com/150x80/28a745/ffffff?text=UG+GOVT" alt="Uganda Government">
+                </div>
+                <div class="partner-logo">
+                    <img src="https://via.placeholder.com/150x80/f39c12/ffffff?text=Peace+Corps" alt="Peace Corps">
+                </div>
+                <div class="partner-logo">
+                    <img src="https://via.placeholder.com/150x80/343a40/ffffff?text=Local+Leaders" alt="Local Leaders">
+                </div>
+                <div class="partner-logo">
+                    <img src="https://via.placeholder.com/150x80/1a5276/ffffff?text=Intl+Donors" alt="International Donors">
+                </div>
+                <div class="partner-logo">
+                    <img src="https://via.placeholder.com/150x80/28a745/ffffff?text=Community+Orgs" alt="Community Organizations">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Help Us Expand Our Impact</h2>
+                <p>Join our mission to build sustainable peace in more communities across the Great Lakes region.</p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="#" class="btn">See Our Programs</a>
+                    <a href="#" class="btn btn-secondary">Make a Donation</a>
+                    <a href="#" class="btn btn-accent">Share Our Impact</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Great Lakes Peace Centre</h3>
+                    <p>Building sustainable peace, reconciliation, and development in the Kasese region through community engagement and empowerment.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html">Our Programs</a></li>
+                        <li><a href="impact.html">Our Impact</a></li>
+                        <li><a href="news.html">News & Events</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Plot 15, Kilembe Road, Kasese, Uganda</p>
+                    <p><i class="fas fa-phone"></i> +256 772 123 456</p>
+                    <p><i class="fas fa-envelope"></i> info@greatlakespeace.org</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter to receive updates on our programs and impact.</p>
+                    <form id="newsletter-form">
+                        <input type="email" placeholder="Your Email Address" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: none; border-radius: 4px;">
+                        <button type="submit" class="btn" style="width: 100%;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Great Lakes Peace Centre. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Animated counters for impact statistics
+        function animateCounter(element, target, duration) {
+            let start = 0;
+            const increment = target / (duration / 16); // 60fps
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    element.textContent = target.toLocaleString();
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(start).toLocaleString();
+                }
+            }, 16);
+        }
+        
+        // Progress bar animation
+        function animateProgressBar(progressBar) {
+            const target = progressBar.getAttribute('data-target');
+            progressBar.style.width = target + '%';
+        }
+        
+        // Create bar charts
+        function createBarChart(containerId, data, labels, colors) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            
+            const maxValue = Math.max(...data);
+            const barWidth = (100 / data.length) - 5; // 5% gap between bars
+            
+            data.forEach((value, index) => {
+                const barHeight = (value / maxValue) * 100;
+                const bar = document.createElement('div');
+                bar.className = 'chart-bar';
+                bar.style.height = '0%'; // Start at 0 for animation
+                bar.style.width = barWidth + '%';
+                bar.style.left = (index * (barWidth + 5)) + '%';
+                bar.style.backgroundColor = colors[index];
+                
+                const label = document.createElement('div');
+                label.className = 'chart-label';
+                label.textContent = labels[index];
+                
+                container.appendChild(bar);
+                container.appendChild(label);
+                
+                // Animate the bar after a short delay
+                setTimeout(() => {
+                    bar.style.height = barHeight + '%';
+                }, 300);
+            });
+        }
+        
+        // Scroll animation for sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Animate statistics when impact overview becomes visible
+                    if (entry.target.classList.contains('impact-overview')) {
+                        animateCounter(document.getElementById('stat1'), 50000, 2000);
+                        animateCounter(document.getElementById('stat2'), 150, 2000);
+                        animateCounter(document.getElementById('stat3'), 25000, 2000);
+                        animateCounter(document.getElementById('stat4'), 30, 2000);
+                    }
+                    
+                    // Animate progress bars when impact areas become visible
+                    if (entry.target.id === 'impact-areas' || entry.target.classList.contains('section')) {
+                        const progressBars = entry.target.querySelectorAll('.progress');
+                        progressBars.forEach((bar, index) => {
+                            setTimeout(() => {
+                                animateProgressBar(bar);
+                            }, index * 300);
+                        });
+                    }
+                    
+                    // Special handling for stat cards
+                    if (entry.target.classList.contains('impact-overview')) {
+                        const statCards = entry.target.querySelectorAll('.stat-card');
+                        statCards.forEach((card, index) => {
+                            setTimeout(() => {
+                                card.classList.add('visible');
+                            }, index * 300);
+                        });
+                    }
+                    
+                    // Special handling for impact areas
+                    if (entry.target.id === 'impact-areas-section') {
+                        const impactAreas = entry.target.querySelectorAll('.impact-area');
+                        impactAreas.forEach((area, index) => {
+                            setTimeout(() => {
+                                area.classList.add('visible');
+                            }, index * 300);
+                        });
+                    }
+                    
+                    // Special handling for timeline items
+                    if (entry.target.classList.contains('impact-timeline')) {
+                        const timelineItems = entry.target.querySelectorAll('.timeline-item');
+                        timelineItems.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('visible');
+                            }, index * 400);
+                        });
+                    }
+                    
+                    // Special handling for story cards
+                    if (entry.target.id === 'stories-section') {
+                        const storyCards = entry.target.querySelectorAll('.story-card');
+                        storyCards.forEach((card, index) => {
+                            setTimeout(() => {
+                                card.classList.add('visible');
+                            }, index * 300);
+                        });
+                    }
+                    
+                    // Special handling for viz cards
+                    if (entry.target.classList.contains('data-viz')) {
+                        const vizCards = entry.target.querySelectorAll('.viz-card');
+                        vizCards.forEach((card, index) => {
+                            setTimeout(() => {
+                                card.classList.add('visible');
+                            }, index * 300);
+                        });
+                        
+                        // Create charts after a delay
+                        setTimeout(() => {
+                            // Conflict reduction chart
+                            createBarChart(
+                                'conflict-chart',
+                                [45, 32, 28, 20, 15], // Conflict incidents by year
+                                ['2018', '2019', '2020', '2021', '2022'],
+                                ['#1a5276', '#1a5276', '#1a5276', '#28a745', '#28a745']
+                            );
+                            
+                            // Program reach chart
+                            createBarChart(
+                                'reach-chart',
+                                [5000, 8000, 12000, 18000, 25000, 35000, 50000], // People reached by year
+                                ['2016', '2017', '2018', '2019', '2020', '2021', '2022'],
+                                ['#1a5276', '#1a5276', '#1a5276', '#1a5276', '#1a5276', '#1a5276', '#1a5276']
+                            );
+                        }, 500);
+                    }
+                    
+                    // Special handling for partner logos
+                    if (entry.target.classList.contains('partners')) {
+                        const partnerLogos = entry.target.querySelectorAll('.partner-logo');
+                        partnerLogos.forEach((logo, index) => {
+                            setTimeout(() => {
+                                logo.classList.add('visible');
+                            }, index * 100);
+                        });
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Add IDs to specific sections for targeted animations
+        document.querySelector('.impact-overview').nextElementSibling.id = 'impact-areas-section';
+        document.querySelector('.impact-timeline').previousElementSibling.id = 'stories-section';
+        
+        // Newsletter form submission
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            alert(`Thank you for subscribing with ${email}! We'll keep you updated on our peacebuilding efforts.`);
+            this.reset();
+        });
+    </script>
+</body>
+</html>
