@@ -419,6 +419,95 @@
             margin-bottom: 20px;
         }
 
+        /* Animated Program Areas */
+        .program-areas {
+            background: var(--light);
+            padding: 60px 0;
+            overflow: hidden;
+        }
+
+        .program-areas-container {
+            position: relative;
+            height: 200px;
+            margin: 40px 0;
+        }
+
+        .program-area {
+            position: absolute;
+            right: -300px;
+            width: 280px;
+            height: 180px;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            transition: var(--transition);
+            animation: moveLeft 30s linear infinite;
+        }
+
+        .program-area:hover {
+            animation-play-state: paused;
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .program-area i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .program-area h4 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .program-area p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Animation delays for each program area */
+        .program-area:nth-child(1) {
+            top: 0;
+            animation-delay: 0s;
+        }
+
+        .program-area:nth-child(2) {
+            top: 0;
+            animation-delay: 6s;
+        }
+
+        .program-area:nth-child(3) {
+            top: 0;
+            animation-delay: 12s;
+        }
+
+        .program-area:nth-child(4) {
+            top: 0;
+            animation-delay: 18s;
+        }
+
+        .program-area:nth-child(5) {
+            top: 0;
+            animation-delay: 24s;
+        }
+
+        @keyframes moveLeft {
+            0% {
+                right: -300px;
+            }
+            100% {
+                right: calc(100% + 300px);
+            }
+        }
+
         /* Impact Section */
         .impact {
             background: linear-gradient(rgba(26, 82, 118, 0.9), rgba(26, 82, 118, 0.9)), url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
@@ -663,6 +752,14 @@
             .about-image {
                 order: -1;
             }
+            
+            .program-areas-container {
+                height: 400px;
+            }
+            
+            .program-area {
+                width: 250px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -714,6 +811,14 @@
                 height: 40px;
                 font-size: 1.2rem;
             }
+            
+            .program-areas-container {
+                height: 600px;
+            }
+            
+            .program-area {
+                width: 220px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -743,6 +848,14 @@
                 width: 35px;
                 height: 35px;
                 font-size: 1rem;
+            }
+            
+            .program-areas-container {
+                height: 800px;
+            }
+            
+            .program-area {
+                width: 200px;
             }
         }
     </style>
@@ -865,6 +978,43 @@
         </div>
     </section>
 
+    <!-- Animated Program Areas Section -->
+    <section class="section program-areas">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Program Areas</h2>
+                <p>Discover the key areas where we're making a difference in building sustainable peace and development.</p>
+            </div>
+            <div class="program-areas-container">
+                <div class="program-area">
+                    <i class="fas fa-hands-helping"></i>
+                    <h4>Peacebuilding & Reconciliation</h4>
+                    <p>Facilitating dialogue and mediation to resolve conflicts and foster reconciliation</p>
+                </div>
+                <div class="program-area">
+                    <i class="fas fa-user-graduate"></i>
+                    <h4>Youth Empowerment</h4>
+                    <p>Mentoring youth to adopt non-violence and develop conflict resolution skills</p>
+                </div>
+                <div class="program-area">
+                    <i class="fas fa-female"></i>
+                    <h4>Women's Leadership</h4>
+                    <p>Empowering women to take active roles in peacebuilding and community development</p>
+                </div>
+                <div class="program-area">
+                    <i class="fas fa-heartbeat"></i>
+                    <h4>Health Advocacy</h4>
+                    <p>Promoting health awareness and advocating for essential healthcare services</p>
+                </div>
+                <div class="program-area">
+                    <i class="fas fa-seedling"></i>
+                    <h4>Sustainable Livelihoods</h4>
+                    <p>Supporting economic empowerment through skills training and livelihood programs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Programs Section -->
     <section class="section">
         <div class="container">
@@ -971,7 +1121,7 @@
                     </div>
                     <div class="news-content">
                         <div class="news-date">January 26, 2024</div>
-                        <h3>Peace Award for GLPC’s Executive Director</h3>
+                        <h3>Peace Award for GLPC's Executive Director</h3>
                         <p>In January 2024, Faruk Kibaba, the founder and Executive Director of GLPC, won a 2024 Peace Award.</p>
                         <a href="#" class="btn">Read More</a>
                     </div>
@@ -994,7 +1144,7 @@
                     <div class="news-content">
                         <div class="news-date">July 7, 2025</div>
                         <h3>Goat Donation in Bulembya Division</h3>
-                        <p>GLPC, together with “Spirit in Action (SIA)”, gave out 25 goats to residents of Bulembya Division as part of a livelihood support initiative.</p>
+                        <p>GLPC, together with "Spirit in Action (SIA)", gave out 25 goats to residents of Bulembya Division as part of a livelihood support initiative.</p>
                         <a href="#" class="btn">Read More</a>
                     </div>
                 </div>
@@ -1229,11 +1379,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
