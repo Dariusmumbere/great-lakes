@@ -18,7 +18,7 @@
             --white: #ffffff;
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
-            --radius: 8px;
+            --gray-300: #dee2e6;
         }
 
         /* Base Styles */
@@ -37,7 +37,6 @@
             line-height: 1.6;
             color: var(--text);
             background-color: var(--white);
-            overflow-x: hidden;
         }
 
         a {
@@ -52,7 +51,6 @@
         img {
             max-width: 100%;
             height: auto;
-            display: block;
         }
 
         .container {
@@ -64,14 +62,6 @@
 
         .section {
             padding: 80px 0;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .section-title {
@@ -110,7 +100,7 @@
             background: var(--primary);
             color: var(--white);
             border: none;
-            border-radius: var(--radius);
+            border-radius: 4px;
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
@@ -129,14 +119,6 @@
 
         .btn-secondary:hover {
             background: #218838;
-        }
-
-        .btn-accent {
-            background: var(--accent);
-        }
-
-        .btn-accent:hover {
-            background: #e67e22;
         }
 
         /* Header Styles */
@@ -215,76 +197,71 @@
             color: var(--primary);
         }
 
-        /* Page Header */
-        .page-header {
-            background: linear-gradient(rgba(26, 82, 118, 0.8), rgba(26, 82, 118, 0.8)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+        /* Page Hero Section */
+        .page-hero {
+            background: linear-gradient(rgba(26, 82, 118, 0.8), rgba(26, 82, 118, 0.9)), url('g1.jpeg');
             background-size: cover;
             background-position: center;
             color: var(--white);
             padding: 180px 0 100px;
             text-align: center;
-            margin-top: 80px;
         }
 
-        .page-header h1 {
-            font-size: 3.5rem;
+        .page-hero h1 {
+            font-size: 3rem;
             margin-bottom: 20px;
-            animation: fadeInUp 1s ease;
         }
 
-        .breadcrumb {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.1rem;
+        .page-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
         }
 
-        .breadcrumb a {
-            transition: var(--transition);
-        }
-
-        .breadcrumb a:hover {
-            color: var(--accent);
-        }
-
-        .breadcrumb span {
-            margin: 0 10px;
-        }
-
-        /* Programs Filter */
-        .programs-filter {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 50px;
-        }
-
-        .filter-btn {
-            padding: 10px 25px;
+        /* Programs Overview Section */
+        .programs-overview {
             background: var(--light);
-            border: none;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
         }
 
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--primary);
-            color: var(--white);
+        .overview-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
         }
 
-        /* Programs Grid */
+        .overview-text {
+            flex: 1;
+        }
+
+        .overview-text h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .overview-text p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .overview-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        /* Programs Grid Section */
         .programs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
         }
 
-        .program-card {
+        .program-item {
             background: var(--white);
-            border-radius: var(--radius);
+            border-radius: 8px;
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
@@ -292,20 +269,20 @@
             transform: translateY(30px);
         }
 
-        .program-card.visible {
+        .program-item.visible {
             opacity: 1;
             transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
-        .program-card:hover {
+        .program-item:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
         .program-image {
-            height: 220px;
+            height: 250px;
             overflow: hidden;
-            position: relative;
         }
 
         .program-image img {
@@ -315,24 +292,12 @@
             transition: var(--transition);
         }
 
-        .program-card:hover .program-image img {
-            transform: scale(1.1);
-        }
-
-        .program-category {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: var(--secondary);
-            color: var(--white);
-            padding: 5px 15px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 600;
+        .program-item:hover .program-image img {
+            transform: scale(1.05);
         }
 
         .program-content {
-            padding: 25px;
+            padding: 30px;
         }
 
         .program-content h3 {
@@ -346,260 +311,34 @@
             margin-bottom: 20px;
         }
 
-        .program-stats {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-            padding: 15px 0;
-            border-top: 1px solid #eee;
-            border-bottom: 1px solid #eee;
+        .program-features {
+            margin: 25px 0;
         }
 
-        .stat {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            color: var(--text-light);
-        }
-
-        /* Program Details Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-            overflow-y: auto;
-            padding: 20px;
-        }
-
-        .modal-content {
-            background: var(--white);
-            max-width: 900px;
-            margin: 50px auto;
-            border-radius: var(--radius);
-            overflow: hidden;
-            animation: modalFadeIn 0.5s ease;
-        }
-
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: translateY(-50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .modal-header {
-            padding: 30px 30px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .modal-close {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-light);
-            transition: var(--transition);
-        }
-
-        .modal-close:hover {
-            color: var(--primary);
-        }
-
-        .modal-body {
-            padding: 0 30px 30px;
-        }
-
-        .modal-image {
-            height: 300px;
-            overflow: hidden;
-            margin: 20px 0;
-        }
-
-        .modal-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .modal-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-
-        .modal-stat {
-            text-align: center;
-            padding: 20px;
-            background: var(--light);
-            border-radius: var(--radius);
-        }
-
-        .modal-stat .stat-number {
-            font-size: 2rem;
-        }
-
-        /* Approach Section */
-        .approach {
-            background: var(--light);
-        }
-
-        .approach-steps {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            counter-reset: step-counter;
-        }
-
-        .approach-step {
-            flex: 1;
-            min-width: 250px;
-            max-width: 300px;
-            background: var(--white);
-            padding: 30px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            position: relative;
-            counter-increment: step-counter;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .approach-step.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .approach-step::before {
-            content: counter(step-counter);
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 40px;
-            background: var(--primary);
-            color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        .approach-step h3 {
-            text-align: center;
-            margin: 10px 0 15px;
-            color: var(--primary);
-        }
-
-        /* Testimonials */
-        .testimonials-slider {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .testimonial-slide {
-            padding: 30px;
-            background: var(--light);
-            border-radius: var(--radius);
-            text-align: center;
-            display: none;
-        }
-
-        .testimonial-slide.active {
-            display: block;
-            animation: fadeIn 1s;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
+        .program-features h4 {
             font-size: 1.1rem;
-            position: relative;
-            padding: 0 20px;
-        }
-
-        .testimonial-text::before, .testimonial-text::after {
-            content: '"';
-            font-size: 3rem;
             color: var(--primary);
-            opacity: 0.3;
-            position: absolute;
+            margin-bottom: 15px;
         }
 
-        .testimonial-text::before {
-            top: -10px;
-            left: 0;
+        .program-features ul {
+            list-style-type: disc;
+            padding-left: 20px;
         }
 
-        .testimonial-text::after {
-            bottom: -30px;
-            right: 0;
+        .program-features li {
+            margin-bottom: 8px;
+            color: var(--text-light);
         }
 
-        .testimonial-author {
-            font-weight: 600;
-            margin-top: 20px;
-        }
-
-        .testimonial-role {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        .slider-controls {
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
-            gap: 10px;
-        }
-
-        .slider-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--text-light);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .slider-dot.active {
-            background: var(--primary);
-            transform: scale(1.2);
-        }
-
-        /* CTA Section */
-        .cta {
+        /* Call to Action Section */
+        .cta-section {
             background: linear-gradient(rgba(26, 82, 118, 0.9), rgba(26, 82, 118, 0.9)), url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
             background-position: center;
             color: var(--white);
             text-align: center;
+            padding: 100px 0;
         }
 
         .cta-content {
@@ -607,14 +346,22 @@
             margin: 0 auto;
         }
 
-        .cta h2 {
+        .cta-content h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
         }
 
-        .cta p {
+        .cta-content p {
+            font-size: 1.2rem;
             margin-bottom: 30px;
-            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .cta-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
         /* Footer */
@@ -697,26 +444,18 @@
             opacity: 0.7;
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         /* Responsive Styles */
         @media (max-width: 992px) {
-            .programs-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            .overview-content {
+                flex-direction: column;
             }
             
-            .modal-content {
-                margin: 20px auto;
+            .overview-image {
+                order: -1;
+            }
+            
+            .programs-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             }
         }
 
@@ -748,8 +487,12 @@
                 margin: 15px 0;
             }
             
-            .page-header h1 {
-                font-size: 2.5rem;
+            .page-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .page-hero p {
+                font-size: 1rem;
             }
             
             .section {
@@ -760,39 +503,28 @@
                 font-size: 2rem;
             }
             
-            .programs-filter {
-                gap: 10px;
-            }
-            
-            .filter-btn {
-                padding: 8px 15px;
-                font-size: 0.9rem;
+            .programs-grid {
+                grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 576px) {
-            .page-header {
+            .page-hero {
                 padding: 150px 0 80px;
             }
             
-            .page-header h1 {
-                font-size: 2rem;
+            .page-hero h1 {
+                font-size: 1.8rem;
             }
             
-            .programs-grid {
-                grid-template-columns: 1fr;
+            .cta-btns {
+                flex-direction: column;
+                align-items: center;
             }
             
-            .modal-header, .modal-body {
-                padding: 20px;
-            }
-            
-            .modal-image {
-                height: 200px;
-            }
-            
-            .cta h2 {
-                font-size: 2rem;
+            .btn {
+                width: 100%;
+                max-width: 250px;
             }
         }
     </style>
@@ -814,8 +546,8 @@
                         <li><a href="impact.html">Impact</a></li>
                         <li><a href="news.html">News</a></li>
                         <li><a href="gallery.html">Gallery</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="#" class="btn btn-secondary">Donate</a></li>
+                        <li><a href="contacts.html">Contact</a></li>
+                        <li><a href="donate.html" class="btn btn-secondary">Donate</a></li>
                     </ul>
                     <div class="hamburger" id="hamburger">
                         <i class="fas fa-bars"></i>
@@ -825,266 +557,123 @@
         </div>
     </header>
 
-    <!-- Page Header -->
-    <section class="page-header">
+    <!-- Page Hero Section -->
+    <section class="page-hero">
         <div class="container">
             <h1>Our Programs</h1>
-            <div class="breadcrumb">
-                <a href="index.html">Home</a>
-                <span><i class="fas fa-chevron-right"></i></span>
-                <span>Our Programs</span>
-            </div>
+            <p>Discover how GLPC implements targeted programs that address the root causes of conflict while fostering social cohesion, health, and sustainable development across the Kasese region.</p>
         </div>
     </section>
 
-    <!-- Programs Filter -->
-    <section class="section">
+    <!-- Programs Overview Section -->
+    <section class="section programs-overview">
         <div class="container">
-            <div class="programs-filter">
-                <button class="filter-btn active" data-filter="all">All Programs</button>
-                <button class="filter-btn" data-filter="youth">Youth Empowerment</button>
-                <button class="filter-btn" data-filter="women">Women's Leadership</button>
-                <button class="filter-btn" data-filter="community">Community Dialogue</button>
-                <button class="filter-btn" data-filter="education">Peace Education</button>
-            </div>
-
-            <!-- Programs Grid -->
-            <div class="programs-grid">
-                <!-- Program 1 -->
-                <div class="program-card" data-category="youth">
-                    <div class="program-image">
-                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Youth Empowerment Program">
-                        <div class="program-category">Youth Empowerment</div>
-                    </div>
-                    <div class="program-content">
-                        <h3>Youth Peace Ambassadors</h3>
-                        <p>Empowering young people with conflict resolution skills, leadership training, and platforms to become agents of positive change in their communities.</p>
-                        <div class="program-stats">
-                            <div class="stat">
-                                <span class="stat-number">2,500+</span>
-                                <span class="stat-label">Youth Trained</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number">45</span>
-                                <span class="stat-label">Communities</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number">85%</span>
-                                <span class="stat-label">Success Rate</span>
-                            </div>
-                        </div>
-                        <button class="btn program-details-btn" data-program="1">Learn More</button>
-                    </div>
+            <div class="overview-content">
+                <div class="overview-text">
+                    <h3>Our Approach to Peacebuilding</h3>
+                    <p>At Great Lakes Peace Centre, we believe that sustainable peace requires a holistic approach that addresses the interconnected challenges facing communities in the Kasese region and the greater Rwenzori sub-region.</p>
+                    <p>Our programs are designed to tackle the root causes of conflict while creating opportunities for growth, resilience, and empowerment. Through strategic partnerships and community-led initiatives, we work to build a future where all people can thrive in peace and dignity.</p>
+                    <p>Each of our programs is carefully designed to complement the others, creating a comprehensive framework for sustainable development and lasting peace.</p>
                 </div>
-
-                <!-- Program 2 -->
-                <div class="program-card" data-category="women">
-                    <div class="program-image">
-                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Women's Leadership Program">
-                        <div class="program-category">Women's Leadership</div>
-                    </div>
-                    <div class="program-content">
-                        <h3>Women Peacebuilders Network</h3>
-                        <p>Building women's capacity to participate in decision-making processes, mediation, and peace negotiations at community and regional levels.</p>
-                        <div class="program-stats">
-                            <div class="stat">
-                                <span class="stat-number">1,200+</span>
-                                <span class="stat-label">Women Leaders</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number">60</span>
-                                <span class="stat-label">Peace Councils</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number">90%</span>
-                                <span class="stat-label">Success Rate</span>
-                            </div>
-                        </div>
-                        <button class="btn program-details-btn" data-program="2">Learn More</button>
-                    </div>
-                </div>
-
-                <!-- Program 3 -->
-                <div class="program-card" data-category="community">
-                    <div class="program-image">
-                        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Community Dialogue Program">
-                        <div class="program-category">Community Dialogue</div>
-                    </div>
-                    <div class="program-content">
-                        <h3>Inter-Community Dialogues</h3>
-                        <p>Facilitating structured dialogues between conflicting communities to address grievances, build trust, and develop collaborative solutions.</p>
-                        <div class="program-stats">
-                            <div class="stat">
-                                <span class="stat-number">150+</span>
-                                <span class="stat-label">Dialogues Held</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number">30</span>
-                                <span class="stat-label">Agreements</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number">78%</span>
-                                <span class="stat-label">Conflict Reduction</span>
-                            </div>
-                        </div>
-                        <button class="btn program-details-btn" data-program="3">Learn More</button>
-                    </div>
-                </div>
-
-                <!-- Program 4 -->
-                <div class="program-card" data-category="education">
-                    <div class="program-image">
-                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Peace Education Program">
-                        <div class="program-category">Peace Education</div>
-                    </div>
-                    <div class="program-content">
-                        <h3>School Peace Clubs</h3>
-                        <p>Integrating peace education into school curricula and establishing peace clubs to nurture a culture of tolerance among young students.</p>
-                        <div class="program-stats">
-                            <div class="stat">
-                                <span class="stat-number">75</span>
-                                <span class="stat-label">Schools</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number">5,000+</span>
-                                <span class="stat-label">Students</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number">92%</span>
-                                <span class="stat-label">Participation</span>
-                            </div>
-                        </div>
-                        <button class="btn program-details-btn" data-program="4">Learn More</button>
-                    </div>
-                </div>
-
-                <!-- Program 5 -->
-                <div class="program-card" data-category="youth">
-                    <div class="program-image">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Vocational Training Program">
-                        <div class="program-category">Youth Empowerment</div>
-                    </div>
-                    <div class="program-content">
-                        <h3>Vocational Skills Training</h3>
-                        <p>Providing market-relevant vocational skills to unemployed youth, reducing their vulnerability to conflict and promoting economic stability.</p>
-                        <div class="program-stats">
-                            <div class="stat">
-                                <span class="stat-number">1,800+</span>
-                                <span class="stat-label">Youth Trained</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number">65%</span>
-                                <span class="stat-label">Employment</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number">12</span>
-                                <span class="stat-label">Vocations</span>
-                            </div>
-                        </div>
-                        <button class="btn program-details-btn" data-program="5">Learn More</button>
-                    </div>
-                </div>
-
-                <!-- Program 6 -->
-                <div class="program-card" data-category="community">
-                    <div class="program-image">
-                        <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Land Conflict Resolution Program">
-                        <div class="program-category">Community Dialogue</div>
-                    </div>
-                    <div class="program-content">
-                        <h3>Land Conflict Mediation</h3>
-                        <p>Addressing the root causes of land-related conflicts through mediation, legal awareness, and collaborative resource management approaches.</p>
-                        <div class="program-stats">
-                            <div class="stat">
-                                <span class="stat-number">200+</span>
-                                <span class="stat-label">Cases Resolved</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number">15</span>
-                                <span class="stat-label">Communities</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number">88%</span>
-                                <span class="stat-label">Satisfaction</span>
-                            </div>
-                        </div>
-                        <button class="btn program-details-btn" data-program="6">Learn More</button>
-                    </div>
+                <div class="overview-image">
+                    <img src="about.jpeg" alt="Community engagement in Kasese">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Approach Section -->
-    <section class="section approach">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Approach</h2>
-                <p>We follow a comprehensive methodology to ensure sustainable peacebuilding outcomes</p>
-            </div>
-            <div class="approach-steps">
-                <div class="approach-step">
-                    <h3>Assessment & Analysis</h3>
-                    <p>We begin by thoroughly understanding the conflict context, root causes, and key stakeholders through participatory research methods.</p>
-                </div>
-                <div class="approach-step">
-                    <h3>Stakeholder Engagement</h3>
-                    <p>We engage all relevant parties in inclusive dialogue processes, ensuring marginalized voices are heard and represented.</p>
-                </div>
-                <div class="approach-step">
-                    <h3>Capacity Building</h3>
-                    <p>We equip community members with conflict resolution skills, leadership capabilities, and resources to sustain peace efforts.</p>
-                </div>
-                <div class="approach-step">
-                    <h3>Sustainable Solutions</h3>
-                    <p>We facilitate the development of locally-owned solutions and mechanisms that address underlying causes of conflict.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
+    <!-- Programs Grid Section -->
     <section class="section">
         <div class="container">
             <div class="section-title">
-                <h2>Program Impact Stories</h2>
-                <p>Hear from community members whose lives have been transformed through our programs</p>
+                <h2>Our Program Areas</h2>
+                <p>Explore our three core programs that work together to build resilient, peaceful communities.</p>
             </div>
-            <div class="testimonials-slider">
-                <div class="testimonial-slide active">
-                    <p class="testimonial-text">Before joining the Youth Peace Ambassadors program, I was involved in community conflicts. The training transformed my perspective and gave me skills to mediate disputes. I've since helped resolve three conflicts in my village.</p>
-                    <p class="testimonial-author">David Masereka</p>
-                    <p class="testimonial-role">Youth Peace Ambassador, Kasese District</p>
+            <div class="programs-grid" id="programs-grid">
+                <!-- Health Promotion Program -->
+                <div class="program-item">
+                    <div class="program-image">
+                        <img src="healthy.PNG" alt="Health Promotion Program">
+                    </div>
+                    <div class="program-content">
+                        <h3>Health Promotion Program</h3>
+                        <p>GLPC enhances community well-being by promoting public health awareness and preventive healthcare through various projects. Our health initiatives focus on creating healthier communities as a foundation for sustainable peace and development.</p>
+                        
+                        <div class="program-features">
+                            <h4>Key Initiatives:</h4>
+                            <ul>
+                                <li>Community health education and awareness campaigns</li>
+                                <li>Preventive healthcare programs and screenings</li>
+                                <li>Hygiene and sanitation improvement projects</li>
+                                <li>Maternal and child health support</li>
+                                <li>HIV/AIDS prevention and support services</li>
+                            </ul>
+                        </div>
+                        
+                        <a href="health.html" class="btn">Learn More</a>
+                    </div>
                 </div>
-                <div class="testimonial-slide">
-                    <p class="testimonial-text">The Women Peacebuilders Network gave me the confidence to speak up in community meetings. I never thought women could have a voice in decision-making, but now I'm part of our local peace committee.</p>
-                    <p class="testimonial-author">Sarah Kembabazi</p>
-                    <p class="testimonial-role">Community Leader, Kilembe Sub-county</p>
+
+                <!-- Social Development and Peace Building Program -->
+                <div class="program-item">
+                    <div class="program-image">
+                        <img src="peace.jpg" alt="Social Development and Peace Building Program">
+                    </div>
+                    <div class="program-content">
+                        <h3>Social Development and Peace Building Program</h3>
+                        <p>This program focuses on empowering youth, promoting peace, and improving access to education and literacy within communities. It aims to nurture responsible, informed, and peaceful citizens who contribute to social harmony and development.</p>
+                        
+                        <div class="program-features">
+                            <h4>Key Initiatives:</h4>
+                            <ul>
+                                <li>Youth empowerment and leadership training</li>
+                                <li>Peace education and conflict resolution workshops</li>
+                                <li>Educational support and literacy programs</li>
+                                <li>Community dialogue and reconciliation forums</li>
+                                <li>Inter-ethnic and cross-cultural exchange programs</li>
+                            </ul>
+                        </div>
+                        
+                        <a href="social.html" class="btn">Learn More</a>
+                    </div>
                 </div>
-                <div class="testimonial-slide">
-                    <p class="testimonial-text">Our two communities had been in conflict over land for years. The dialogue process facilitated by Great Lakes Peace Centre helped us find common ground. We now share resources peacefully.</p>
-                    <p class="testimonial-author">John Muhindo</p>
-                    <p class="testimonial-role">Elder, Rwenzori Region</p>
-                </div>
-                <div class="slider-controls">
-                    <div class="slider-dot active" data-slide="0"></div>
-                    <div class="slider-dot" data-slide="1"></div>
-                    <div class="slider-dot" data-slide="2"></div>
+
+                <!-- FAUNA COFFEE Social Enterprise -->
+                <div class="program-item">
+                    <div class="program-image">
+                        <img src="coffeee.jpg" alt="FAUNA COFFEE Social Enterprise">
+                    </div>
+                    <div class="program-content">
+                        <h3>FAUNA COFFEE [Social Enterprise]</h3>
+                        <p>Serves as a sustainable social business model that supports GLPC's mission of peacebuilding, community empowerment, and youth livelihood development. Through coffee value chain and trade, the enterprise generates income to sustain GLPC programs, while also creating employment and promoting economic resilience.</p>
+                        
+                        <div class="program-features">
+                            <h4>Key Initiatives:</h4>
+                            <ul>
+                                <li>Sustainable coffee farming and value chain development</li>
+                                <li>Youth employment and skills training in agribusiness</li>
+                                <li>Income generation to support GLPC peacebuilding programs</li>
+                                <li>Market access for local coffee farmers</li>
+                                <li>Environmental conservation through sustainable practices</li>
+                            </ul>
+                        </div>
+                        
+                        <a href="coffee.html" class="btn">Learn More</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="section cta">
+    <!-- Call to Action Section -->
+    <section class="cta-section">
         <div class="container">
             <div class="cta-content">
-                <h2>Support Our Programs</h2>
-                <p>Your contribution helps us expand our peacebuilding initiatives to more communities in need across Kasese district.</p>
-                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                    <a href="#" class="btn">Volunteer With Us</a>
-                    <a href="#" class="btn btn-secondary">Make a Donation</a>
-                    <a href="#" class="btn btn-accent">Partner With Us</a>
+                <h2>Join Us in Building Peace</h2>
+                <p>Your support enables us to expand our programs and reach more communities in need. Together, we can create lasting change in the Kasese region.</p>
+                <div class="cta-btns">
+                    <a href="donate.html" class="btn btn-secondary">Donate Now</a>
+                    <a href="contacts.html" class="btn">Get Involved</a>
                 </div>
             </div>
         </div>
@@ -1135,56 +724,6 @@
         </div>
     </footer>
 
-    <!-- Program Details Modal -->
-    <div class="modal" id="program-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modal-title">Program Title</h2>
-                <button class="modal-close" id="modal-close">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-image">
-                    <img id="modal-image" src="" alt="Program Image">
-                </div>
-                <p id="modal-description">Program description will appear here.</p>
-                
-                <div class="modal-stats">
-                    <div class="modal-stat">
-                        <span class="stat-number" id="modal-stat1">0</span>
-                        <span class="stat-label">Beneficiaries</span>
-                    </div>
-                    <div class="modal-stat">
-                        <span class="stat-number" id="modal-stat2">0</span>
-                        <span class="stat-label">Communities</span>
-                    </div>
-                    <div class="modal-stat">
-                        <span class="stat-number" id="modal-stat3">0%</span>
-                        <span class="stat-label">Success Rate</span>
-                    </div>
-                    <div class="modal-stat">
-                        <span class="stat-number" id="modal-stat4">0</span>
-                        <span class="stat-label">Duration (months)</span>
-                    </div>
-                </div>
-                
-                <h3>Program Objectives</h3>
-                <ul id="modal-objectives">
-                    <!-- Objectives will be added dynamically -->
-                </ul>
-                
-                <h3>Key Activities</h3>
-                <ul id="modal-activities">
-                    <!-- Activities will be added dynamically -->
-                </ul>
-                
-                <div style="display: flex; gap: 15px; margin-top: 30px; flex-wrap: wrap;">
-                    <a href="#" class="btn">Support This Program</a>
-                    <a href="#" class="btn btn-secondary">Download Brochure</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script>
         // Mobile Navigation Toggle
         const hamburger = document.getElementById('hamburger');
@@ -1214,306 +753,35 @@
             }
         });
         
-        // Programs Filter
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const programCards = document.querySelectorAll('.program-card');
+        // Program items animation
+        const programItems = document.querySelectorAll('.program-item');
         
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Update active button
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                
-                const filter = button.getAttribute('data-filter');
-                
-                // Filter programs
-                programCards.forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-        
-        // Program Details Modal
-        const programDetailButtons = document.querySelectorAll('.program-details-btn');
-        const modal = document.getElementById('program-modal');
-        const modalClose = document.getElementById('modal-close');
-        
-        // Program data
-        const programs = {
-            1: {
-                title: "Youth Peace Ambassadors",
-                image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                description: "Our Youth Peace Ambassadors program empowers young people aged 15-30 with essential conflict resolution skills, leadership training, and platforms to become agents of positive change in their communities. Through a comprehensive curriculum that includes mediation techniques, communication skills, and community organizing, we're building a new generation of peace leaders in Kasese.",
-                stats: {
-                    beneficiaries: "2,500+",
-                    communities: "45",
-                    success: "85%",
-                    duration: "12"
-                },
-                objectives: [
-                    "Develop youth leadership capabilities in conflict resolution",
-                    "Create platforms for youth participation in peace processes",
-                    "Reduce youth involvement in community conflicts",
-                    "Foster inter-generational dialogue on peacebuilding"
-                ],
-                activities: [
-                    "Intensive 3-month training program",
-                    "Community peace projects led by youth",
-                    "Inter-community youth exchange programs",
-                    "Mentorship from experienced peacebuilders"
-                ]
-            },
-            2: {
-                title: "Women Peacebuilders Network",
-                image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                description: "The Women Peacebuilders Network recognizes the critical role women play in sustainable peacebuilding. This program builds women's capacity to participate effectively in decision-making processes, mediation, and peace negotiations at both community and regional levels. We provide training, resources, and networking opportunities to empower women as key agents of peace.",
-                stats: {
-                    beneficiaries: "1,200+",
-                    communities: "60",
-                    success: "90%",
-                    duration: "18"
-                },
-                objectives: [
-                    "Increase women's participation in peace processes",
-                    "Build women's confidence and leadership skills",
-                    "Address gender-specific conflict issues",
-                    "Create sustainable women-led peace structures"
-                ],
-                activities: [
-                    "Leadership and negotiation skills training",
-                    "Establishment of women peace committees",
-                    "Regular networking and experience sharing forums",
-                    "Advocacy for women's inclusion in formal peace processes"
-                ]
-            },
-            3: {
-                title: "Inter-Community Dialogues",
-                image: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                description: "Our Inter-Community Dialogue program facilitates structured conversations between conflicting communities to address historical grievances, build trust, and develop collaborative solutions to shared challenges. Using proven dialogue methodologies, we create safe spaces for honest conversation and mutual understanding.",
-                stats: {
-                    beneficiaries: "15,000+",
-                    communities: "30",
-                    success: "78%",
-                    duration: "6"
-                },
-                objectives: [
-                    "Resolve specific inter-community conflicts",
-                    "Build sustainable relationships between communities",
-                    "Develop shared resource management agreements",
-                    "Create early warning systems for conflict prevention"
-                ],
-                activities: [
-                    "Conflict analysis and stakeholder mapping",
-                    "Facilitated dialogue sessions",
-                    "Trust-building activities and ceremonies",
-                    "Development of community peace agreements"
-                ]
-            },
-            4: {
-                title: "School Peace Clubs",
-                image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                description: "The School Peace Clubs program integrates peace education into school curricula and establishes peace clubs to nurture a culture of tolerance, dialogue, and non-violence among young students. By reaching children at an impressionable age, we're planting seeds of peace that will grow for generations.",
-                stats: {
-                    beneficiaries: "5,000+",
-                    communities: "75",
-                    success: "92%",
-                    duration: "24"
-                },
-                objectives: [
-                    "Instill values of tolerance and non-violence in students",
-                    "Equip students with conflict resolution skills",
-                    "Reduce school-based violence and bullying",
-                    "Create peer-to-peer peace education models"
-                ],
-                activities: [
-                    "Establishment and support of school peace clubs",
-                    "Training of teachers in peace education methodologies",
-                    "Inter-school peace competitions and events",
-                    "Development of age-appropriate peace education materials"
-                ]
-            },
-            5: {
-                title: "Vocational Skills Training",
-                image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                description: "This program provides market-relevant vocational skills to unemployed youth, reducing their vulnerability to conflict involvement and promoting economic stability. By addressing the economic roots of conflict, we're creating alternatives to violence and building more resilient communities.",
-                stats: {
-                    beneficiaries: "1,800+",
-                    communities: "25",
-                    success: "65%",
-                    duration: "9"
-                },
-                objectives: [
-                    "Reduce youth unemployment in conflict-affected areas",
-                    "Provide alternatives to participation in violence",
-                    "Promote economic cooperation across conflict divides",
-                    "Build youth capacity for self-reliance"
-                ],
-                activities: [
-                    "Market analysis to identify viable vocations",
-                    "Hands-on vocational training programs",
-                    "Business skills and entrepreneurship training",
-                    "Post-training support and mentorship"
-                ]
-            },
-            6: {
-                title: "Land Conflict Mediation",
-                image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                description: "Land conflicts are among the most common and destructive in the Kasese region. Our Land Conflict Mediation program addresses these disputes through professional mediation, legal awareness, and collaborative resource management approaches that respect traditional and modern land governance systems.",
-                stats: {
-                    beneficiaries: "8,000+",
-                    communities: "15",
-                    success: "88%",
-                    duration: "12"
-                },
-                objectives: [
-                    "Resolve specific land-related conflicts",
-                    "Develop sustainable land sharing agreements",
-                    "Increase awareness of land rights and responsibilities",
-                    "Strengthen local land governance institutions"
-                ],
-                activities: [
-                    "Professional mediation of land disputes",
-                    "Community legal awareness sessions",
-                    "Support for land documentation processes",
-                    "Training of community land mediators"
-                ]
-            }
-        };
-        
-        // Open modal when program details button is clicked
-        programDetailButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const programId = button.getAttribute('data-program');
-                const program = programs[programId];
-                
-                if (program) {
-                    document.getElementById('modal-title').textContent = program.title;
-                    document.getElementById('modal-image').src = program.image;
-                    document.getElementById('modal-description').textContent = program.description;
-                    
-                    document.getElementById('modal-stat1').textContent = program.stats.beneficiaries;
-                    document.getElementById('modal-stat2').textContent = program.stats.communities;
-                    document.getElementById('modal-stat3').textContent = program.stats.success;
-                    document.getElementById('modal-stat4').textContent = program.stats.duration;
-                    
-                    // Populate objectives
-                    const objectivesList = document.getElementById('modal-objectives');
-                    objectivesList.innerHTML = '';
-                    program.objectives.forEach(obj => {
-                        const li = document.createElement('li');
-                        li.textContent = obj;
-                        li.style.marginBottom = '10px';
-                        li.style.paddingLeft = '10px';
-                        li.style.position = 'relative';
-                        li.style.listStyle = 'none';
-                        li.style.paddingLeft = '20px';
-                        li.innerHTML = '<i class="fas fa-check" style="color: var(--secondary); position: absolute; left: 0;"></i> ' + obj;
-                        objectivesList.appendChild(li);
-                    });
-                    
-                    // Populate activities
-                    const activitiesList = document.getElementById('modal-activities');
-                    activitiesList.innerHTML = '';
-                    program.activities.forEach(act => {
-                        const li = document.createElement('li');
-                        li.textContent = act;
-                        li.style.marginBottom = '10px';
-                        li.style.paddingLeft = '10px';
-                        li.style.position = 'relative';
-                        li.style.listStyle = 'none';
-                        li.style.paddingLeft = '20px';
-                        li.innerHTML = '<i class="fas fa-circle" style="color: var(--primary); font-size: 0.5rem; position: absolute; left: 0; top: 8px;"></i> ' + act;
-                        activitiesList.appendChild(li);
-                    });
-                    
-                    modal.style.display = 'block';
-                    document.body.style.overflow = 'hidden';
-                }
-            });
-        });
-        
-        // Close modal
-        modalClose.addEventListener('click', () => {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        });
-        
-        // Close modal when clicking outside
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        });
-        
-        // Scroll animation for sections
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    
-                    // Special handling for program cards
-                    if (entry.target.classList.contains('section') && !entry.target.classList.contains('approach')) {
-                        const programCards = entry.target.querySelectorAll('.program-card');
-                        programCards.forEach((card, index) => {
-                            setTimeout(() => {
-                                card.classList.add('visible');
-                            }, index * 200);
-                        });
-                    }
-                    
-                    // Special handling for approach steps
-                    if (entry.target.classList.contains('approach')) {
-                        const approachSteps = entry.target.querySelectorAll('.approach-step');
-                        approachSteps.forEach((step, index) => {
-                            setTimeout(() => {
-                                step.classList.add('visible');
-                            }, index * 300);
-                        });
-                    }
-                }
-            });
-        }, observerOptions);
-        
-        // Observe all sections
-        document.querySelectorAll('.section').forEach(section => {
-            observer.observe(section);
-        });
-        
-        // Testimonial slider
-        const slides = document.querySelectorAll('.testimonial-slide');
-        const dots = document.querySelectorAll('.slider-dot');
-        let currentSlide = 0;
-        
-        function showSlide(n) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            currentSlide = (n + slides.length) % slides.length;
-            
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
+        // Function to check if element is in viewport
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+                rect.bottom >= 0
+            );
         }
         
-        dots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                showSlide(parseInt(dot.getAttribute('data-slide')));
+        // Function to add animation to program items
+        function animateProgramItems() {
+            programItems.forEach((item, index) => {
+                if (isInViewport(item) && !item.classList.contains('visible')) {
+                    // Add delay for staggered animation
+                    setTimeout(() => {
+                        item.classList.add('visible');
+                    }, index * 200); // 200ms delay between each item
+                }
             });
-        });
+        }
         
-        // Auto-advance slides
-        setInterval(() => {
-            showSlide(currentSlide + 1);
-        }, 5000);
+        // Initial check on page load
+        window.addEventListener('load', animateProgramItems);
+        
+        // Check on scroll
+        window.addEventListener('scroll', animateProgramItems);
         
         // Newsletter form submission
         document.getElementById('newsletter-form').addEventListener('submit', function(e) {
@@ -1524,6 +792,4 @@
         });
     </script>
 </body>
-
 </html>
-
