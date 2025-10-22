@@ -392,7 +392,7 @@
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(3, 1fr); /* 3 columns on large screens */
             gap: 30px;
         }
 
@@ -739,6 +739,11 @@
             .timeline-item::after {
                 left: 20px !important;
             }
+            
+            /* Team grid for medium screens */
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+            }
         }
 
         @media (max-width: 768px) {
@@ -780,6 +785,11 @@
             .section-title h2 {
                 font-size: 2rem;
             }
+            
+            /* Team grid for small screens */
+            .team-grid {
+                grid-template-columns: 1fr; /* 1 column on small screens */
+            }
         }
 
         @media (max-width: 576px) {
@@ -791,8 +801,7 @@
                 font-size: 2rem;
             }
             
-            .values-grid,
-            .team-grid {
+            .values-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -910,16 +919,17 @@
             <div class="team-grid">
                 <div class="team-member">
                     <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Dr. Sarah Kambale">
+                        <img src="fatinah.jpg" alt="Masika Fatinah">
                     </div>
                     <div class="member-info">
                         <h3>Masika Fatinah</h3>
                         <div class="member-role">Executive Director</div>
                        
+                    </div>
                 </div>
                 <div class="team-member">
                     <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Michael Bwambale">
+                        <img src="alex.jpg" alt="Byadunga Alex">
                     </div>
                     <div class="member-info">
                         <h3>Byadunga Alex</h3>
@@ -929,27 +939,27 @@
                 </div>
                 <div class="team-member">
                     <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Grace Masika">
+                        <img src="wisley.jpg" alt="Bwamble Wisley">
                     </div>
                     <div class="member-info">
                         <h3>Bwamble Wisley</h3>
-                        <div class="member-role">3. Program Manager Social Development and Peace Building</div>
+                        <div class="member-role">Program Manager Social Development and Peace Building</div>
                        
                     </div>
                 </div>
                 <div class="team-member">
                     <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Robert Kule">
+                        <img src="mariam.jpg" alt="Mariam Muhammade Issa">
                     </div>
                     <div class="member-info">
                         <h3>Mariam Muhammade Issa</h3>
-                        <div class="member-role">Project Coordinator- Community Mobile Library </div>
+                        <div class="member-role">Project Coordinator- Community Mobile Library</div>
                        
                     </div>
                 </div>
                 <div class="team-member">
                     <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Robert Kule">
+                        <img src="mujungu.jpg" alt="Mujungu Paul">
                     </div>
                     <div class="member-info">
                         <h3>Mujungu Paul</h3>
@@ -1212,7 +1222,3 @@
     </script>
 </body>
 </html>
-
-
-
-
