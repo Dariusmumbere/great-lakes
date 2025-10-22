@@ -204,13 +204,16 @@
             color: var(--primary);
         }
 
-        /* Page Header */
+        /* Page Header with Background Image */
         .page-header {
-            background: var(--gray-100);
-            color: var(--text);
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), 
+                        url('jlpc.jpg') no-repeat center center;
+            background-size: cover;
+            color: var(--white);
             padding: 160px 0 80px;
             text-align: center;
             margin-top: 80px;
+            position: relative;
         }
 
         .page-header h1 {
@@ -218,15 +221,17 @@
             margin-bottom: 20px;
             font-weight: 300;
             letter-spacing: -1px;
-            color: var(--primary);
+            color: var(--white);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .page-header p {
             font-size: 1.2rem;
             max-width: 600px;
             margin: 0 auto;
-            color: var(--text-light);
+            color: var(--white);
             line-height: 1.7;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         }
 
         /* Contact Section */
@@ -651,7 +656,7 @@
                 </div>
                 <nav>
                     <ul class="nav-menu" id="nav-menu">
-                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="#" class="active">Home</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="programs.html">Programs</a></li>
                         <li><a href="impact.html">Impact</a></li>
@@ -961,5 +966,3 @@
 </body>
 
 </html>
-
-
