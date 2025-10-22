@@ -456,6 +456,92 @@
             font-size: 0.9rem;
         }
 
+        /* Board Members Section */
+        .board-members {
+            background: var(--white);
+            padding: 80px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .board-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+
+        .board-track {
+            display: flex;
+            gap: 30px;
+            width: max-content;
+            animation: scrollBoard 60s linear infinite;
+            padding: 10px 0;
+        }
+
+        .board-member {
+            flex: 0 0 280px;
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .board-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .board-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .board-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .board-member:hover .board-image img {
+            transform: scale(1.05);
+        }
+
+        .board-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .board-info h3 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .board-role {
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        @keyframes scrollBoard {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-280px * 10 - 30px * 10)); /* Width of all items + gaps */
+            }
+        }
+
+        /* Pause animation on hover */
+        .board-track:hover {
+            animation-play-state: paused;
+        }
+
         /* History Section */
         .timeline {
             position: relative;
@@ -744,6 +830,11 @@
             .team-grid {
                 grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
             }
+
+            /* Board members adjustment */
+            .board-member {
+                flex: 0 0 240px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -790,6 +881,11 @@
             .team-grid {
                 grid-template-columns: 1fr; /* 1 column on small screens */
             }
+
+            /* Board members adjustment */
+            .board-member {
+                flex: 0 0 220px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -807,6 +903,11 @@
             
             .cta h2 {
                 font-size: 2rem;
+            }
+
+            /* Board members adjustment */
+            .board-member {
+                flex: 0 0 200px;
             }
         }
     </style>
@@ -969,115 +1070,185 @@
             </div>
         </div>
     </section>
-    <section class="section team" id="team">
+
+    <!-- Board Members Section -->
+    <section class="section board-members" id="board-members">
         <div class="container">
             <div class="section-title">
-                <h2>Board members</h2>
-
+                <h2>Board Members</h2>
+                <p>Our esteemed board members who guide our strategic direction</p>
             </div>
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="faruku.jpg" alt="Masika Fatinah">
+            <div class="board-container">
+                <div class="board-track">
+                    <!-- Board Member 1 -->
+                    <div class="board-member">
+                        <div class="board-image">
+                            <img src="faruku.jpg" alt="Faruku Kibaba">
+                        </div>
+                        <div class="board-info">
+                            <h3>Faruku Kibaba</h3>
+                            <div class="board-role">Board Member</div>
+                        </div>
                     </div>
-                    <div class="member-info">
-                        <h3>Faruku Kibaba</h3>
-                       
-                       
+                    
+                    <!-- Board Member 2 -->
+                    <div class="board-member">
+                        <div class="board-image">
+                            <img src="nick.jpg" alt="Nick Bell">
+                        </div>
+                        <div class="board-info">
+                            <h3>Nick Bell</h3>
+                            <div class="board-role">Board Member</div>
+                        </div>
                     </div>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="nick.jpg" alt="Byadunga Alex">
+                    
+                    <!-- Board Member 3 -->
+                    <div class="board-member">
+                        <div class="board-image">
+                            <img src="wisley.jpg" alt="Deborah Macarteny">
+                        </div>
+                        <div class="board-info">
+                            <h3>Deborah Macarteny</h3>
+                            <div class="board-role">Board Member</div>
+                        </div>
                     </div>
-                    <div class="member-info">
-                        <h3>Nick Bell</h3>
-                        
-                       
+                    
+                    <!-- Board Member 4 -->
+                    <div class="board-member">
+                        <div class="board-image">
+                            <img src="ma.jpg" alt="Naomi Ayot Oyaro">
+                        </div>
+                        <div class="board-info">
+                            <h3>Naomi Ayot Oyaro</h3>
+                            <div class="board-role">Board Member</div>
+                        </div>
                     </div>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="wisley.jpg" alt="Bwamble Wisley">
+                    
+                    <!-- Board Member 5 -->
+                    <div class="board-member">
+                        <div class="board-image">
+                            <img src="muju.jpg" alt="Dr. Hellen Nambalilwa">
+                        </div>
+                        <div class="board-info">
+                            <h3>Dr. Hellen Nambalilwa</h3>
+                            <div class="board-role">Board Member</div>
+                        </div>
                     </div>
-                    <div class="member-info">
-                        <h3>Deborah Macarteny </h3>
-                        
-                       
+                    
+                    <!-- Board Member 6 -->
+                    <div class="board-member">
+                        <div class="board-image">
+                            <img src="muju.jpg" alt="Luke Addison">
+                        </div>
+                        <div class="board-info">
+                            <h3>Luke Addison</h3>
+                            <div class="board-role">Board Member</div>
+                        </div>
                     </div>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="ma.jpg" alt="Mariam Muhammade Issa">
+                    
+                    <!-- Board Member 7 -->
+                    <div class="board-member">
+                        <div class="board-image">
+                            <img src="muju.jpg" alt="Arafat Bwambale">
+                        </div>
+                        <div class="board-info">
+                            <h3>Arafat Bwambale</h3>
+                            <div class="board-role">Board Member</div>
+                        </div>
                     </div>
-                    <div class="member-info">
-                        <h3>Naomi Ayot Oyaro</h3>
+                    
+                    <!-- Board Member 8 -->
+                    <div class="board-member">
+                        <div class="board-image">
+                            <img src="muju.jpg" alt="Masika Shamim">
+                        </div>
+                        <div class="board-info">
+                            <h3>Masika Shamim</h3>
+                            <div class="board-role">Board Member</div>
+                        </div>
                     </div>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="muju.jpg" alt="Mujungu Paul">
+                    
+                    <!-- Board Member 9 -->
+                    <div class="board-member">
+                        <div class="board-image">
+                            <img src="muju.jpg" alt="Afan Abdallah">
+                        </div>
+                        <div class="board-info">
+                            <h3>Afan Abdallah</h3>
+                            <div class="board-role">Board Member</div>
+                        </div>
                     </div>
-                    <div class="member-info">
-                        <h3>Dr. Hellen Nambalilwa</h3>
-                        
-                       
+                    
+                    <!-- Board Member 10 -->
+                    <div class="board-member">
+                        <div class="board-image">
+                            <img src="muju.jpg" alt="Masika Fatinah">
+                        </div>
+                        <div class="board-info">
+                            <h3>Masika Fatinah</h3>
+                            <div class="board-role">Board Member</div>
+                        </div>
                     </div>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="muju.jpg" alt="Mujungu Paul">
+
+                    <!-- Duplicate items for seamless looping -->
+                    <!-- Board Member 1 -->
+                    <div class="board-member">
+                        <div class="board-image">
+                            <img src="faruku.jpg" alt="Faruku Kibaba">
+                        </div>
+                        <div class="board-info">
+                            <h3>Faruku Kibaba</h3>
+                            <div class="board-role">Board Member</div>
+                        </div>
                     </div>
-                    <div class="member-info">
-                        <h3>Luke Addison</h3>
-                        
-                       
+                    
+                    <!-- Board Member 2 -->
+                    <div class="board-member">
+                        <div class="board-image">
+                            <img src="nick.jpg" alt="Nick Bell">
+                        </div>
+                        <div class="board-info">
+                            <h3>Nick Bell</h3>
+                            <div class="board-role">Board Member</div>
+                        </div>
                     </div>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="muju.jpg" alt="Mujungu Paul">
+                    
+                    <!-- Board Member 3 -->
+                    <div class="board-member">
+                        <div class="board-image">
+                            <img src="wisley.jpg" alt="Deborah Macarteny">
+                        </div>
+                        <div class="board-info">
+                            <h3>Deborah Macarteny</h3>
+                            <div class="board-role">Board Member</div>
+                        </div>
                     </div>
-                    <div class="member-info">
-                        <h3>Arafat Bwambale</h3>
-                        
-                       
+                    
+                    <!-- Board Member 4 -->
+                    <div class="board-member">
+                        <div class="board-image">
+                            <img src="ma.jpg" alt="Naomi Ayot Oyaro">
+                        </div>
+                        <div class="board-info">
+                            <h3>Naomi Ayot Oyaro</h3>
+                            <div class="board-role">Board Member</div>
+                        </div>
                     </div>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="muju.jpg" alt="Mujungu Paul">
-                    </div>
-                    <div class="member-info">
-                        <h3>Masika Shamim</h3>
-                        
-                       
-                    </div>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="muju.jpg" alt="Mujungu Paul">
-                    </div>
-                    <div class="member-info">
-                        <h3>Afan Abdallah</h3>
-                        
-                       
-                    </div>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="muju.jpg" alt="Mujungu Paul">
-                    </div>
-                    <div class="member-info">
-                        <h3>Masika Fatinah</h3>
-                        
-                       
+                    
+                    <!-- Board Member 5 -->
+                    <div class="board-member">
+                        <div class="board-image">
+                            <img src="muju.jpg" alt="Dr. Hellen Nambalilwa">
+                        </div>
+                        <div class="board-info">
+                            <h3>Dr. Hellen Nambalilwa</h3>
+                            <div class="board-role">Board Member</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
 
     <!-- History Section -->
     <section class="section" id="history">
@@ -1330,5 +1501,3 @@
     </script>
 </body>
 </html>
-
-
