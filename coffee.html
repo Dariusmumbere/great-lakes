@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fauna Coffee Social Enterprise - Great Lakes Peace Centre</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8B4513;
+            --secondary: #28a745;
+            --accent: #f39c12;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --text: #333;
+            --text-light: #6c757d;
+            --white: #ffffff;
+            --coffee-light: #f5f1eb;
+            --coffee-medium: #d7ccc8;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--white);
+        }
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 80px 0; }
+        .section-title { text-align: center; margin-bottom: 50px; position: relative; }
+        .section-title h2 { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; }
+        .section-title p { color: var(--text-light); max-width: 700px; margin: 0 auto; }
+        .section-title::after {
+            content: ''; position: absolute; bottom: -10px; left: 50%;
+            transform: translateX(-50%); width: 80px; height: 4px;
+            background: var(--secondary); border-radius: 2px;
+        }
+        header { background: var(--white); box-shadow: var(--shadow); position: fixed; width: 100%; top: 0; z-index: 1000; }
+        .header-container { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
+        .logo img { height: 50px; margin-right: 10px; }
+        .logo-text { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+        .nav-menu { display: flex; }
+        .nav-menu li { margin-left: 30px; list-style: none; }
+        .nav-menu a { font-weight: 600; position: relative; padding: 5px 0; text-decoration: none; color: var(--text); }
+        .nav-menu a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--secondary); transition: var(--transition); }
+        .nav-menu a:hover::after, .nav-menu a.active::after { width: 100%; }
+        .btn {
+            display: inline-block; padding: 12px 30px;
+            background: var(--primary); color: var(--white);
+            border-radius: 4px; font-weight: 600; transition: var(--transition);
+        }
+        .btn:hover { background: #6d370f; transform: translateY(-2px); box-shadow: var(--shadow); }
+        .btn-secondary {
+            background: var(--secondary);
+        }
+        .btn-secondary:hover {
+            background: #218838;
+        }
+        .program-hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(rgba(139, 69, 19, 0.8), rgba(139, 69, 19, 0.9)), url('coffee-bg.jpg');
+            background-size: cover; background-position: center;
+            color: var(--white); text-align: center;
+        }
+        .program-hero h1 { font-size: 3rem; margin-bottom: 20px; }
+        .program-overview { background: var(--coffee-light); }
+        .overview-content { display: flex; align-items: center; gap: 50px; flex-wrap: wrap; }
+        .overview-text { flex: 1; }
+        .overview-text h3 { font-size: 2rem; color: var(--primary); margin-bottom: 20px; }
+        .overview-text p { color: var(--text-light); margin-bottom: 15px; }
+        .overview-image { flex: 1; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+        .overview-image img { width: 100%; height: auto; }
+        .objectives-container {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;
+        }
+        .objective-card {
+            background: var(--white); border-radius: 8px; box-shadow: var(--shadow);
+            overflow: hidden; transition: var(--transition); padding: 30px;
+            text-align: center;
+        }
+        .objective-card:hover { transform: translateY(-8px); box-shadow: 0 12px 20px rgba(0,0,0,0.1); }
+        .objective-icon {
+            font-size: 2.5rem; color: var(--primary); margin-bottom: 20px;
+        }
+        .objective-card h3 { font-size: 1.5rem; color: var(--primary); margin-bottom: 15px; }
+        .objective-card p { color: var(--text-light); }
+        .impact-section {
+            background: var(--coffee-medium);
+        }
+        .impact-stats {
+            display: flex; justify-content: space-around; flex-wrap: wrap;
+            text-align: center; margin-top: 40px;
+        }
+        .stat-item {
+            margin: 20px; padding: 20px;
+        }
+        .stat-number {
+            font-size: 3rem; font-weight: 700; color: var(--primary);
+            display: block; margin-bottom: 10px;
+        }
+        .stat-label {
+            font-size: 1.2rem; color: var(--text);
+        }
+        .value-chain {
+            background: var(--coffee-light);
+        }
+        .chain-steps {
+            display: flex; justify-content: space-between; flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        .chain-step {
+            flex: 1; min-width: 200px; text-align: center; padding: 20px;
+            margin: 10px; position: relative;
+        }
+        .chain-step:not(:last-child)::after {
+            content: '→'; position: absolute; right: -20px; top: 50%;
+            transform: translateY(-50%); font-size: 2rem; color: var(--primary);
+        }
+        .chain-icon {
+            font-size: 2.5rem; color: var(--primary); margin-bottom: 15px;
+        }
+        .chain-step h4 {
+            font-size: 1.2rem; color: var(--primary); margin-bottom: 10px;
+        }
+        .cta-section {
+            background: linear-gradient(rgba(139, 69, 19, 0.9), rgba(139, 69, 19, 0.9)), url('coffee-beans.jpg');
+            background-size: cover; background-position: center;
+            color: var(--white); text-align: center; padding: 100px 0;
+        }
+        .cta-section h2 {
+            font-size: 2.5rem; margin-bottom: 20px;
+        }
+        .cta-section p {
+            max-width: 700px; margin: 0 auto 30px; font-size: 1.2rem;
+        }
+        footer {
+            background: var(--dark); color: var(--white); padding: 70px 0 20px;
+        }
+        .footer-content {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px; margin-bottom: 50px;
+        }
+        .footer-column h3 { font-size: 1.3rem; margin-bottom: 25px; position: relative; padding-bottom: 10px; }
+        .footer-column h3::after { content: ''; position: absolute; bottom: 0; left: 0; width: 50px; height: 2px; background: var(--secondary); }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: var(--white); opacity: 0.8; text-decoration: none; }
+        .footer-links a:hover { opacity: 1; padding-left: 5px; }
+        .social-links { display: flex; gap: 15px; margin-top: 20px; }
+        .social-links a {
+            display: flex; align-items: center; justify-content: center;
+            width: 40px; height: 40px; background: rgba(255,255,255,0.1);
+            border-radius: 50%; color: var(--white); transition: var(--transition);
+        }
+        .social-links a:hover { background: var(--secondary); transform: translateY(-3px); }
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.7; font-size: 0.9rem; }
+        @media(max-width:768px){
+            .overview-content{flex-direction:column}
+            .program-hero h1{font-size:2.2rem}
+            .chain-step:not(:last-child)::after {
+                display: none;
+            }
+            .chain-steps {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+<header id="header">
+    <div class="container">
+        <div class="header-container">
+            <div class="logo">
+                <img src="logoo.jpeg" alt="GLPC Logo">
+                <div class="logo-text">Great Lakes Peace Centre</div>
+            </div>
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="programs.html" class="active">Programs</a></li>
+                    <li><a href="impact.html">Impact</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contacts.html">Contact</a></li>
+                    <li><a href="donate.html" class="btn">Donate</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<section class="program-hero">
+    <div class="container">
+        <h1>Fauna Coffee Social Enterprise</h1>
+        <p>A sustainable social business model supporting GLPC's mission of peacebuilding, community empowerment, and youth livelihood development through the coffee value chain.</p>
+        <a href="#objectives" class="btn">Our Objectives</a>
+        <a href="#impact" class="btn btn-secondary">Our Impact</a>
+    </div>
+</section>
+
+<section class="section program-overview">
+    <div class="container">
+        <div class="overview-content">
+            <div class="overview-text">
+                <h3>Sustainable Peace Through Coffee</h3>
+                <p>Fauna Coffee serves as a sustainable social business model that supports GLPC's mission of peacebuilding, community empowerment, and youth livelihood development.</p>
+                <p>Through coffee value chain and trade, the enterprise generates income to sustain GLPC programs, while also creating employment and promoting economic resilience among communities in the Great Lakes region.</p>
+                <p>By connecting local coffee farmers to markets and providing training in coffee production and barista skills, we're building economic opportunities that contribute to lasting peace and stability.</p>
+            </div>
+            <div class="overview-image">
+                <img src="coffee-farming.jpg" alt="Fauna Coffee Social Enterprise">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="objectives">
+    <div class="container">
+        <div class="section-title">
+            <h2>Our Strategic Objectives</h2>
+            <p>Fauna Coffee is designed to create sustainable impact through multiple strategic objectives</p>
+        </div>
+
+        <div class="objectives-container">
+            <!-- Objective 1 -->
+            <div class="objective-card">
+                <div class="objective-icon">
+                    <i class="fas fa-hand-holding-usd"></i>
+                </div>
+                <h3>Financial Sustainability</h3>
+                <p>Reduce donor dependence for running secretariat costs and create a reliable source of income from local business sales.</p>
+            </div>
+
+            <!-- Objective 2 -->
+            <div class="objective-card">
+                <div class="objective-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Long-term Strategy</h3>
+                <p>Implement a long-term financing strategy incorporated into the Resource Mobilization strategy.</p>
+            </div>
+
+            <!-- Objective 3 -->
+            <div class="objective-card">
+                <div class="objective-icon">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <h3>Brand Visibility</h3>
+                <p>Enhance visibility and branding of the Social venture to increase market presence and impact.</p>
+            </div>
+
+            <!-- Objective 4 -->
+            <div class="objective-card">
+                <div class="objective-icon">
+                    <i class="fas fa-coffee"></i>
+                </div>
+                <h3>Local Consumption</h3>
+                <p>Improve local consumption of coffee at affordable prices while promoting Ugandan coffee culture.</p>
+            </div>
+
+            <!-- Objective 5 -->
+            <div class="objective-card">
+                <div class="objective-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Strategic Partnerships</h3>
+                <p>Develop improved strategic partnerships for coffee value addition support and marketing.</p>
+            </div>
+
+            <!-- Objective 6 -->
+            <div class="objective-card">
+                <div class="objective-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Community Empowerment</h3>
+                <p>Create employment opportunities and promote economic resilience among communities in the Great Lakes region.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section impact-section" id="impact">
+    <div class="container">
+        <div class="section-title">
+            <h2>Our Impact</h2>
+            <p>Fauna Coffee is creating tangible change in communities across the Great Lakes region</p>
+        </div>
+
+        <div class="impact-stats">
+            <div class="stat-item">
+                <span class="stat-number">112</span>
+                <span class="stat-label">Coffee Farmers Supported</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">5</span>
+                <span class="stat-label">Trained Baristas</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Ugandan Coffee</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">1</span>
+                <span class="stat-label">Social Enterprise</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section value-chain">
+    <div class="container">
+        <div class="section-title">
+            <h2>The Coffee Value Chain</h2>
+            <p>From bean to cup, we're creating opportunities at every stage of the coffee journey</p>
+        </div>
+
+        <div class="chain-steps">
+            <div class="chain-step">
+                <div class="chain-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <h4>Cultivation</h4>
+                <p>Supporting local farmers with sustainable farming practices</p>
+            </div>
+            <div class="chain-step">
+                <div class="chain-icon">
+                    <i class="fas fa-hands"></i>
+                </div>
+                <h4>Harvesting</h4>
+                <p>Training in selective picking for quality beans</p>
+            </div>
+            <div class="chain-step">
+                <div class="chain-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h4>Processing</h4>
+                <p>Wet and dry processing methods for optimal flavor</p>
+            </div>
+            <div class="chain-step">
+                <div class="chain-icon">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <h4>Roasting</h4>
+                <p>Developing unique roast profiles for local tastes</p>
+            </div>
+            <div class="chain-step">
+                <div class="chain-icon">
+                    <i class="fas fa-mug-hot"></i>
+                </div>
+                <h4>Brewing</h4>
+                <p>Training baristas in specialty coffee preparation</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <h2>Support Our Mission Through Coffee</h2>
+        <p>Every purchase of Fauna Coffee supports peacebuilding, community empowerment, and youth livelihood development in the Great Lakes region.</p>
+        <a href="contacts.html" class="btn">Contact Us to Order</a>
+        <a href="donate.html" class="btn btn-secondary">Support Our Work</a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Great Lakes Peace Centre</h3>
+                <p>Building sustainable peace and resilience through community-driven initiatives across the Rwenzori region.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/GLPC256"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/GlpcUg"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/company/great-lakes-peace-center/posts/?feedView=all"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="programs.html">Our Programs</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="news.html">News & Events</a></li>
+                    <li><a href="contacts.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Kasese - Mbarara Road near Rwenzori International Hotel</p>
+                <p><i class="fas fa-phone"></i> +256 774115594</p>
+                <p><i class="fas fa-envelope"></i> info@greatlakespeace.org</p>
+            </div>
+            <div class="footer-column">
+                <h3>Fauna Coffee Updates</h3>
+                <p>Subscribe to our newsletter for updates on our coffee enterprise and peacebuilding initiatives.</p>
+                <form id="newsletter-form">
+                    <input type="email" placeholder="Your Email Address" required style="width:100%;padding:10px;margin-bottom:10px;border:none;border-radius:4px;">
+                    <button type="submit" class="btn" style="width:100%;">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Great Lakes Peace Centre. All Rights Reserved. | Fauna Coffee Social Enterprise</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+        alert(`Thank you for subscribing to Fauna Coffee updates with ${email}!`);
+        this.reset();
+    });
+</script>
+</body>
+</html>
