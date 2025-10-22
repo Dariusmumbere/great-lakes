@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Our Mission - Great Lakes Peace Centre</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables for consistent theming */
+        :root {
+            --primary: #1a5276;
+            --secondary: #28a745;
+            --accent: #f39c12;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --text: #333;
+            --text-light: #6c757d;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --gray-300: #dee2e6;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--white);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: #144260;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: #218838;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-menu {
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 30px;
+        }
+
+        .nav-menu a {
+            font-weight: 600;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        /* Donate Hero Section */
+        .donate-hero {
+            background: linear-gradient(rgba(26, 82, 118, 0.85), rgba(26, 82, 118, 0.9)), url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 180px 0 100px;
+            text-align: center;
+        }
+
+        .donate-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .donate-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Donate Content Section */
+        .donate-content {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        .donate-form-container {
+            flex: 1;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 40px;
+        }
+
+        .donate-info {
+            flex: 1;
+        }
+
+        .donation-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .donation-option {
+            background: var(--light);
+            border: 2px solid var(--gray-300);
+            border-radius: 4px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .donation-option:hover {
+            border-color: var(--primary);
+        }
+
+        .donation-option.selected {
+            border-color: var(--secondary);
+            background: rgba(40, 167, 69, 0.1);
+        }
+
+        .donation-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .donation-description {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .custom-amount {
+            margin-bottom: 30px;
+        }
+
+        .custom-amount label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .custom-amount input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--gray-300);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .donate-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .paypal-btn {
+            background: #0070ba;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .paypal-btn:hover {
+            background: #005ea6;
+        }
+
+        .paypal-btn i {
+            font-size: 1.3rem;
+        }
+
+        .security-notice {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+
+        .security-notice i {
+            color: var(--secondary);
+            margin-right: 5px;
+        }
+
+        .donate-info h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .donate-info p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .impact-list {
+            margin: 30px 0;
+        }
+
+        .impact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .impact-item i {
+            color: var(--secondary);
+            margin-right: 15px;
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 70px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
+        }
+
+        .footer-column p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .donate-content {
+                flex-direction: column;
+            }
+            
+            .donate-info {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: var(--transition);
+                box-shadow: var(--shadow);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+            }
+            
+            .donate-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .donate-hero p {
+                font-size: 1rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .donation-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .donate-hero {
+                padding: 150px 0 80px;
+            }
+            
+            .donate-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .donation-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .donate-form-container {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-container">
+                <div class="logo">
+                    <img src="logoo.jpeg" alt="Great Lakes Peace Centre Logo">
+                    <div class="logo-text">Great Lakes Peace Centre</div>
+                </div>
+                <nav>
+                    <ul class="nav-menu" id="nav-menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="impact.html">Impact</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contacts.html">Contact</a></li>
+                        <li><a href="donate.html" class="btn btn-secondary active">Donate</a></li>
+                    </ul>
+                    <div class="hamburger" id="hamburger">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Donate Hero Section -->
+    <section class="donate-hero">
+        <div class="container">
+            <h1>Support Our Peacebuilding Mission</h1>
+            <p>Your donation helps us continue our vital work in conflict resolution, youth empowerment, and community development in Kasese. Every contribution makes a difference.</p>
+        </div>
+    </section>
+
+    <!-- Donate Content Section -->
+    <section class="section">
+        <div class="container">
+            <div class="donate-content">
+                <div class="donate-form-container">
+                    <h2>Make a Donation</h2>
+                    <p style="margin-bottom: 30px; color: var(--text-light);">Select an amount or enter a custom donation</p>
+                    
+                    <div class="donation-options">
+                        <div class="donation-option" data-amount="25">
+                            <div class="donation-amount">$25</div>
+                            <div class="donation-description">Provides school supplies for 5 children</div>
+                        </div>
+                        <div class="donation-option" data-amount="50">
+                            <div class="donation-amount">$50</div>
+                            <div class="donation-description">Supports a youth peace workshop</div>
+                        </div>
+                        <div class="donation-option" data-amount="100">
+                            <div class="donation-amount">$100</div>
+                            <div class="donation-description">Funds a community dialogue session</div>
+                        </div>
+                        <div class="donation-option" data-amount="250">
+                            <div class="donation-amount">$250</div>
+                            <div class="donation-description">Trains 10 youth peace ambassadors</div>
+                        </div>
+                        <div class="donation-option" data-amount="500">
+                            <div class="donation-amount">$500</div>
+                            <div class="donation-description">Supports a women's leadership program</div>
+                        </div>
+                        <div class="donation-option" data-amount="1000">
+                            <div class="donation-amount">$1,000</div>
+                            <div class="donation-description">Funds a community peace initiative</div>
+                        </div>
+                    </div>
+                    
+                    <div class="custom-amount">
+                        <label for="custom-amount">Or enter a custom amount (USD)</label>
+                        <input type="number" id="custom-amount" placeholder="Enter amount">
+                    </div>
+                    
+                    <button class="btn donate-btn" id="donate-btn">
+                        Donate Now
+                    </button>
+                    
+                    <button class="btn paypal-btn" id="paypal-btn">
+                        <i class="fab fa-paypal"></i> Donate with PayPal
+                    </button>
+                    
+                    <div class="security-notice">
+                        <i class="fas fa-lock"></i> Your donation is secure and encrypted
+                    </div>
+                </div>
+                
+                <div class="donate-info">
+                    <h3>How Your Donation Helps</h3>
+                    <p>Your generous contribution supports our peacebuilding initiatives in the Kasese region, helping to transform communities affected by conflict.</p>
+                    
+                    <div class="impact-list">
+                        <div class="impact-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Youth Empowerment</h4>
+                                <p>Provide conflict resolution training and leadership development for young people.</p>
+                            </div>
+                        </div>
+                        <div class="impact-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Community Dialogues</h4>
+                                <p>Facilitate peacebuilding conversations between conflicting communities.</p>
+                            </div>
+                        </div>
+                        <div class="impact-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Women's Leadership</h4>
+                                <p>Support women's participation in peace processes and community decision-making.</p>
+                            </div>
+                        </div>
+                        <div class="impact-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Education Support</h4>
+                                <p>Provide educational resources and scholarships to children in conflict-affected areas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>Other Ways to Support</h3>
+                    <p>Can't donate right now? There are other meaningful ways to support our mission:</p>
+                    <ul style="margin-left: 20px; color: var(--text-light);">
+                        <li style="margin-bottom: 10px;">• Volunteer with our programs</li>
+                        <li style="margin-bottom: 10px;">• Share our mission on social media</li>
+                        <li style="margin-bottom: 10px;">• Organize a fundraiser in your community</li>
+                        <li style="margin-bottom: 10px;">• Advocate for peacebuilding in your networks</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Great Lakes Peace Centre</h3>
+                    <p>Building sustainable peace, reconciliation, and development in the Kasese region through community engagement and empowerment.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/GLPC256"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/GlpcUg"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/company/great-lakes-peace-center/posts/?feedView=all"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html">Our Programs</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="news.html">News & Events</a></li>
+                        <li><a href="contacts.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Kasese - Mbarara Road near Rwenzori International Hotel</p>
+                    <p><i class="fas fa-phone"></i> +256 774115594</p>
+                    <p><i class="fas fa-envelope"></i> info@greatlakespeace.org</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter to receive updates on our programs and impact.</p>
+                    <form id="newsletter-form">
+                        <input type="email" placeholder="Your Email Address" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: none; border-radius: 4px;">
+                        <button type="submit" class="btn" style="width: 100%;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Great Lakes Peace Centre. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Donation amount selection
+        const donationOptions = document.querySelectorAll('.donation-option');
+        const customAmountInput = document.getElementById('custom-amount');
+        let selectedAmount = 0;
+        
+        donationOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                // Remove selected class from all options
+                donationOptions.forEach(opt => opt.classList.remove('selected'));
+                
+                // Add selected class to clicked option
+                option.classList.add('selected');
+                
+                // Set selected amount
+                selectedAmount = option.getAttribute('data-amount');
+                
+                // Clear custom amount input
+                customAmountInput.value = '';
+            });
+        });
+        
+        // Custom amount input
+        customAmountInput.addEventListener('input', () => {
+            if (customAmountInput.value) {
+                // Remove selected class from all options
+                donationOptions.forEach(opt => opt.classList.remove('selected'));
+                
+                // Set selected amount to custom value
+                selectedAmount = customAmountInput.value;
+            }
+        });
+        
+        // Donate button functionality
+        document.getElementById('donate-btn').addEventListener('click', () => {
+            processDonation();
+        });
+        
+        // PayPal button functionality
+        document.getElementById('paypal-btn').addEventListener('click', () => {
+            processDonation();
+        });
+        
+        function processDonation() {
+            // Determine the donation amount
+            let amount = selectedAmount;
+            
+            // If no option is selected and custom amount is empty
+            if (!amount && !customAmountInput.value) {
+                alert('Please select a donation amount or enter a custom amount.');
+                return;
+            }
+            
+            // If custom amount is entered, use that
+            if (customAmountInput.value) {
+                amount = customAmountInput.value;
+            }
+            
+            // Validate amount
+            if (amount <= 0) {
+                alert('Please enter a valid donation amount.');
+                return;
+            }
+            
+            // In a real implementation, this would redirect to your payment processor
+            // For this example, we'll simulate a PayPal integration
+            
+            // Show processing message
+            alert(`Thank you for your donation of $${amount}! You will now be redirected to PayPal to complete your payment.`);
+            
+            // In a real implementation, you would redirect to PayPal
+            // window.location.href = `https://www.paypal.com/donate?hosted_button_id=YOUR_BUTTON_ID&amount=${amount}`;
+            
+            // For demo purposes, we'll just reset the form
+            donationOptions.forEach(opt => opt.classList.remove('selected'));
+            customAmountInput.value = '';
+            selectedAmount = 0;
+        }
+        
+        // Newsletter form submission
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            alert(`Thank you for subscribing with ${email}! We'll keep you updated on our peacebuilding efforts.`);
+            this.reset();
+        });
+    </script>
+</body>
+</html>
