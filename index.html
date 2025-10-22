@@ -366,17 +366,12 @@
             box-shadow: var(--shadow);
         }
 
-        /* Programs Section with Carousel - UPDATED */
-        .programs-carousel {
-            position: relative;
-            overflow: hidden;
-            padding: 20px 0;
-        }
-
-        .programs-track {
+        /* Programs Section - UPDATED */
+        .programs-container {
             display: flex;
-            transition: transform 0.5s ease;
+            flex-wrap: wrap;
             gap: 30px;
+            justify-content: center;
         }
 
         .program-card {
@@ -385,9 +380,17 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
-            /* Updated to show 3 cards per view */
-            min-width: calc(33.333% - 20px);
-            flex-shrink: 0;
+            flex: 1 1 calc(33.333% - 20px);
+            min-width: 300px;
+            max-width: 380px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .program-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .program-card:hover {
@@ -427,59 +430,6 @@
         .program-content p {
             color: var(--text-light);
             margin-bottom: 20px;
-        }
-
-        .carousel-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 40px;
-            gap: 20px;
-        }
-
-        .carousel-arrow {
-            background: var(--primary);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .carousel-arrow:hover {
-            background: #144260;
-            transform: scale(1.1);
-        }
-
-        .carousel-arrow:disabled {
-            background: var(--text-light);
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .carousel-dots {
-            display: flex;
-            gap: 10px;
-        }
-
-        .carousel-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--gray-300);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .carousel-dot.active {
-            background: var(--primary);
-            transform: scale(1.2);
         }
 
         /* Impact Section */
@@ -727,9 +677,8 @@
                 order: -1;
             }
             
-            /* Updated for 2 cards per view on medium screens */
             .program-card {
-                min-width: calc(50% - 15px);
+                flex: 1 1 calc(50% - 15px);
             }
         }
 
@@ -783,9 +732,8 @@
                 font-size: 1.2rem;
             }
             
-            /* Updated for 1 card per view on small screens */
             .program-card {
-                min-width: 100%;
+                flex: 1 1 100%;
             }
         }
 
@@ -946,69 +894,56 @@
                 <h2>Our Programs</h2>
                 <p>We implement targeted programs addressing the root causes of conflict and promoting sustainable peace in the Kasese region.</p>
             </div>
-            <div class="programs-carousel">
-                <div class="programs-track" id="programs-track">
-                    <div class="program-card">
-                        <div class="program-image">
-                            <img src="youth.webp" alt="Youth Empowerment Program">
-                        </div>
-                        <div class="program-content">
-                            <h3>Youth Empowerment</h3>
-                            <p>GLPC works with youth, both in and out of school, mentoring them to adopt non-violence, conflict resolution skills, and promoting peace and reconciliation.</p>
-                            <a href="#" class="btn">Learn More</a>
-                        </div>
+            <div class="programs-container" id="programs-container">
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="youth.webp" alt="Youth Empowerment Program">
                     </div>
-                    <div class="program-card">
-                        <div class="program-image">
-                            <img src="hep.jpeg" alt="Women's Leadership Program">
-                        </div>
-                        <div class="program-content">
-                            <h3>Hepatitis B Birth Dose Advocacy</h3>
-                            <p>This program began in May 2022 under GLPC, focusing on advocating for the administration of the hepatitis B birth dose vaccine in Kasese and surrounding areas.</p>
-                            <a href="#" class="btn">Learn More</a>
-                        </div>
-                    </div>
-                    <div class="program-card">
-                        <div class="program-image">
-                            <img src="peace.jpg" alt="Community Dialogue Program">
-                        </div>
-                        <div class="program-content">
-                            <h3>Peace & Conflict Resolution</h3>
-                            <p>GLPC works with youth, both in and out of school, mentoring them to adopt non-violence, conflict resolution skills, and promoting peace and reconciliation.</p>
-                            <a href="#" class="btn">Learn More</a>
-                        </div>
-                    </div>
-                    <div class="program-card">
-                        <div class="program-image">
-                            <img src="education.jpg" alt="Education Program">
-                        </div>
-                        <div class="program-content">
-                            <h3>Education Support</h3>
-                            <p>Providing educational resources and scholarships to children in conflict-affected areas, ensuring access to quality education for all.</p>
-                            <a href="#" class="btn">Learn More</a>
-                        </div>
-                    </div>
-                    <div class="program-card">
-                        <div class="program-image">
-                            <img src="livelihood.jpg" alt="Livelihood Program">
-                        </div>
-                        <div class="program-content">
-                            <h3>Livelihood Support</h3>
-                            <p>Empowering communities through vocational training, microfinance initiatives, and sustainable agriculture programs to improve economic resilience.</p>
-                            <a href="#" class="btn">Learn More</a>
-                        </div>
+                    <div class="program-content">
+                        <h3>Youth Empowerment</h3>
+                        <p>GLPC works with youth, both in and out of school, mentoring them to adopt non-violence, conflict resolution skills, and promoting peace and reconciliation.</p>
+                        <a href="#" class="btn">Learn More</a>
                     </div>
                 </div>
-                <div class="carousel-controls">
-                    <button class="carousel-arrow prev-program" id="prev-program">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <div class="carousel-dots" id="program-dots">
-                        <!-- Dots will be generated by JavaScript -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="hep.jpeg" alt="Women's Leadership Program">
                     </div>
-                    <button class="carousel-arrow next-program" id="next-program">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
+                    <div class="program-content">
+                        <h3>Hepatitis B Birth Dose Advocacy</h3>
+                        <p>This program began in May 2022 under GLPC, focusing on advocating for the administration of the hepatitis B birth dose vaccine in Kasese and surrounding areas.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="peace.jpg" alt="Community Dialogue Program">
+                    </div>
+                    <div class="program-content">
+                        <h3>Peace & Conflict Resolution</h3>
+                        <p>GLPC works with youth, both in and out of school, mentoring them to adopt non-violence, conflict resolution skills, and promoting peace and reconciliation.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="education.jpg" alt="Education Program">
+                    </div>
+                    <div class="program-content">
+                        <h3>Education Support</h3>
+                        <p>Providing educational resources and scholarships to children in conflict-affected areas, ensuring access to quality education for all.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="livelihood.jpg" alt="Livelihood Program">
+                    </div>
+                    <div class="program-content">
+                        <h3>Livelihood Support</h3>
+                        <p>Empowering communities through vocational training, microfinance initiatives, and sustainable agriculture programs to improve economic resilience.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1260,71 +1195,35 @@
         // Start the slideshow
         startSlideShow();
         
-        // Programs Carousel Functionality
-        const programsTrack = document.getElementById('programs-track');
-        const prevProgramBtn = document.getElementById('prev-program');
-        const nextProgramBtn = document.getElementById('next-program');
-        const programDotsContainer = document.getElementById('program-dots');
-        
+        // Programs Animation
         const programCards = document.querySelectorAll('.program-card');
-        const totalPrograms = programCards.length;
-        const programsPerView = 3; // Updated to show 3 programs per view
-        let currentProgramIndex = 0;
-        const totalSlides = Math.ceil(totalPrograms / programsPerView);
         
-        // Create dots for carousel
-        for (let i = 0; i < totalSlides; i++) {
-            const dot = document.createElement('div');
-            dot.classList.add('carousel-dot');
-            if (i === 0) dot.classList.add('active');
-            dot.setAttribute('data-slide', i);
-            dot.addEventListener('click', () => {
-                goToProgramSlide(i);
+        // Function to check if element is in viewport
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+                rect.bottom >= 0
+            );
+        }
+        
+        // Function to add animation to program cards
+        function animateProgramCards() {
+            programCards.forEach((card, index) => {
+                if (isInViewport(card) && !card.classList.contains('visible')) {
+                    // Add delay for staggered animation
+                    setTimeout(() => {
+                        card.classList.add('visible');
+                    }, index * 200); // 200ms delay between each card
+                }
             });
-            programDotsContainer.appendChild(dot);
         }
         
-        const programDots = document.querySelectorAll('.carousel-dot');
+        // Initial check on page load
+        window.addEventListener('load', animateProgramCards);
         
-        // Function to update carousel position
-        function updateCarousel() {
-            const cardWidth = programCards[0].offsetWidth + 30; // card width + gap
-            const translateX = -currentProgramIndex * programsPerView * cardWidth;
-            programsTrack.style.transform = `translateX(${translateX}px)`;
-            
-            // Update dots
-            programDots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentProgramIndex);
-            });
-            
-            // Update button states
-            prevProgramBtn.disabled = currentProgramIndex === 0;
-            nextProgramBtn.disabled = currentProgramIndex === totalSlides - 1;
-        }
-        
-        // Function to go to specific slide
-        function goToProgramSlide(index) {
-            currentProgramIndex = index;
-            updateCarousel();
-        }
-        
-        // Event listeners for program carousel
-        prevProgramBtn.addEventListener('click', () => {
-            if (currentProgramIndex > 0) {
-                currentProgramIndex--;
-                updateCarousel();
-            }
-        });
-        
-        nextProgramBtn.addEventListener('click', () => {
-            if (currentProgramIndex < totalSlides - 1) {
-                currentProgramIndex++;
-                updateCarousel();
-            }
-        });
-        
-        // Initialize carousel
-        updateCarousel();
+        // Check on scroll
+        window.addEventListener('scroll', animateProgramCards);
         
         // Animated counter for impact statistics
         function animateCounter(element, target, duration) {
@@ -1400,4 +1299,4 @@
         });
     </script>
 </body>
-</html> 
+</html>
