@@ -18,6 +18,7 @@
             --white: #ffffff;
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
+            --gray-300: #dee2e6;
         }
 
         /* Base Styles */
@@ -365,7 +366,7 @@
             box-shadow: var(--shadow);
         }
 
-        /* Programs Section with Carousel */
+        /* Programs Section with Carousel - UPDATED */
         .programs-carousel {
             position: relative;
             overflow: hidden;
@@ -384,6 +385,7 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            /* Updated to show 3 cards per view */
             min-width: calc(33.333% - 20px);
             flex-shrink: 0;
         }
@@ -725,6 +727,7 @@
                 order: -1;
             }
             
+            /* Updated for 2 cards per view on medium screens */
             .program-card {
                 min-width: calc(50% - 15px);
             }
@@ -780,6 +783,7 @@
                 font-size: 1.2rem;
             }
             
+            /* Updated for 1 card per view on small screens */
             .program-card {
                 min-width: 100%;
             }
@@ -1264,7 +1268,7 @@
         
         const programCards = document.querySelectorAll('.program-card');
         const totalPrograms = programCards.length;
-        const programsPerView = 3;
+        const programsPerView = 3; // Updated to show 3 programs per view
         let currentProgramIndex = 0;
         const totalSlides = Math.ceil(totalPrograms / programsPerView);
         
